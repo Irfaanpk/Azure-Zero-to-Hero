@@ -93,3 +93,4 @@ This section provides a detailed understanding of Microsoft Entra ID — how ide
 | 5.6 | [Azure RBAC](./Microsoft%20Entra%20ID/Azure%20RBAC/) | Azure RBAC, built-in roles, custom roles, and role assignments |
 | 5.7 | [RBAC Scopes](./Microsoft%20Entra%20ID/RBAC%20Scopes/) | Management group, subscription, resource group, and resource scopes |
 | 5.8 | [Managed Identities](./Microsoft%20Entra%20ID/Managed%20Identities/) | System-assigned and user-assigned managed identities for Azure resource access |
+| 5.9 | [Azure Policy and Management Groups](./Microsoft%20Entra%20ID/Azure%20Policy%20and%20Management%20Groups/) | Azure Policy, policy effects, governance, management groups, and subscription-level governance |
