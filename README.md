@@ -97,25 +97,25 @@ This section provides a detailed understanding of Microsoft Entra ID — how ide
 
 ---
 
-## 6. Azure Storage
+## 6. Azure Storage Account
 
-This section provides a detailed understanding of Azure Storage — including storage accounts, Blob Storage, storage redundancy, data protection, access control, networking, encryption, and Azure Files.
+This section provides a detailed understanding of Azure Storage Accounts — including Blob Storage, storage redundancy, data protection, access control, networking, encryption, and Azure Files.
 
-📂 **[Explore → Azure Storage](./Azure%20Storage/)**
+📂 **[Explore → Azure Storage Account](./Azure%20Storage%20Account/)**
 
 | # | Sub-Topic | Description |
 |---|-----------|-------------|
-| 6.1 | [Introduction to Azure Storage](./Azure%20Storage/Introduction%20to%20Azure%20Storage/) | Azure Storage overview and the different storage services available |
-| 6.2 | [Storage Accounts](./Azure%20Storage/Storage%20Accounts/) | Storage account types, performance tiers, configuration, and storage redundancy |
-| 6.3 | [Azure Blob Storage](./Azure%20Storage/Azure%20Blob%20Storage/) | Blob Storage, containers, blob types, and storage tiers |
-| 6.4 | [Blob Access Levels](./Azure%20Storage/Blob%20Access%20Levels/) | Private, Blob, and Container access levels and anonymous access |
-| 6.5 | [Blob Versioning](./Azure%20Storage/Blob%20Versioning/) | Blob versions, previous versions, and restoring blob data |
-| 6.6 | [Blob Soft Delete and Snapshots](./Azure%20Storage/Blob%20Soft%20Delete%20and%20Snapshots/) | Protecting blobs from accidental deletion and creating blob snapshots |
-| 6.7 | [Blob Lifecycle Management](./Azure%20Storage/Blob%20Lifecycle%20Management/) | Automatically moving or deleting blobs based on defined rules |
-| 6.8 | [Blob Object Replication](./Azure%20Storage/Blob%20Object%20Replication/) | Replicating blob objects between source and destination storage accounts |
-| 6.9 | [SAS and Storage Account Access Keys](./Azure%20Storage/SAS%20and%20Storage%20Account%20Access%20Keys/) | Shared Access Signatures, access keys, permissions, and secure storage access |
-| 6.10 | [Azure Storage Explorer](./Azure%20Storage/Azure%20Storage%20Explorer/) | Managing Azure Storage resources and data using Storage Explorer |
-| 6.11 | [Storage Account Firewall and Network Access](./Azure%20Storage/Storage%20Account%20Firewall%20and%20Network%20Access/) | Storage networking, firewall rules, selected networks, and private access |
-| 6.12 | [Blob Storage Security and Encryption](./Azure%20Storage/Blob%20Storage%20Security%20and%20Encryption/) | Storage security, encryption, and protecting stored data |
-| 6.13 | [Azure Files](./Azure%20Storage/Azure%20Files/) | Azure managed file storage and file share concepts |
-| 6.14 | [Azure File Shares and SMB/NFS](./Azure%20Storage/Azure%20File%20Shares%20and%20SMB%20NFS/) | Creating file shares and accessing them using SMB and NFS |
+| 6.1 | [Introduction to Azure Storage](./Azure%20Storage%20Account/Introduction%20to%20Azure%20Storage/) | Azure Storage overview and the different storage services available |
+| 6.2 | [Storage Accounts](./Azure%20Storage%20Account/Storage%20Accounts/) | Storage account types, performance tiers, configuration, and storage redundancy |
+| 6.3 | [Azure Blob Storage](./Azure%20Storage%20Account/Azure%20Blob%20Storage/) | Blob Storage, containers, blob types, and storage tiers |
+| 6.4 | [Blob Access Levels](./Azure%20Storage%20Account/Blob%20Access%20Levels/) | Private, Blob, and Container access levels and anonymous access |
+| 6.5 | [Blob Versioning](./Azure%20Storage%20Account/Blob%20Versioning/) | Blob versions, previous versions, and restoring blob data |
+| 6.6 | [Blob Soft Delete and Snapshots](./Azure%20Storage%20Account/Blob%20Soft%20Delete%20and%20Snapshots/) | Protecting blobs from accidental deletion and creating blob snapshots |
+| 6.7 | [Blob Lifecycle Management](./Azure%20Storage%20Account/Blob%20Lifecycle%20Management/) | Automatically moving or deleting blobs based on defined rules |
+| 6.8 | [Blob Object Replication](./Azure%20Storage%20Account/Blob%20Object%20Replication/) | Replicating blob objects between source and destination storage accounts |
+| 6.9 | [SAS and Storage Account Access Keys](./Azure%20Storage%20Account/SAS%20and%20Storage%20Account%20Access%20Keys/) | Shared Access Signatures, access keys, permissions, and secure storage access |
+| 6.10 | [Azure Storage Explorer](./Azure%20Storage%20Account/Azure%20Storage%20Explorer/) | Managing Azure Storage resources and data using Storage Explorer |
+| 6.11 | [Storage Account Firewall and Network Access](./Azure%20Storage%20Account/Storage%20Account%20Firewall%20and%20Network%20Access/) | Storage networking, firewall rules, selected networks, and private access |
+| 6.12 | [Blob Storage Security and Encryption](./Azure%20Storage%20Account/Blob%20Storage%20Security%20and%20Encryption/) | Storage security, encryption, and protecting stored data |
+| 6.13 | [Azure Files](./Azure%20Storage%20Account/Azure%20Files/) | Azure managed file storage and file share concepts |
+| 6.14 | [Azure File Shares and SMB/NFS](./Azure%20Storage%20Account/Azure%20File%20Shares%20and%20SMB%20NFS/) | Creating file shares and accessing them using SMB and NFS |
