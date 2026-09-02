@@ -40,3 +40,15 @@ By the end of this course, you will be able to:
 - ✅ Store, secure, and manage data at scale using Azure Storage
 - ✅ Design isolated, secure cloud networks using Azure Virtual Network
 - ✅ Connect and protect Azure networks using VNet Peering, VPN Gateway, Private Endpoints, and Azure Firewall
+
+---
+
+## 📚 Table of Contents
+
+## 1. Introduction to Cloud Computing
+
+This section introduces the fundamentals of cloud computing — what it is, why it exists, and how it differs from traditional on-premises IT infrastructure. It covers key characteristics, business benefits, and real-world use cases that form the foundation for understanding modern cloud platforms like AWS.
+
+📂 **[Explore → Introduction to Cloud Computing](./Introduction%20to%20cloud%20computing/)**
+
+---
