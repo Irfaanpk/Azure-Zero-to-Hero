@@ -150,6 +150,7 @@ az cloud set --name AzureUSGovernment
 
 # Use Azure China
 az cloud set --name AzureChinaCloud
+```
 
 ---
 
@@ -438,3 +439,52 @@ New regions can be introduced in different countries and geographic areas to pro
 
 ```bash
 az account list-locations
+```
+
+---
+
+# Connecting Your Local Machine to Azure (Installing Azure CLI)
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- An active Azure account
+- An active Azure subscription
+- Administrator access to your local machine
+- Basic command line knowledge
+- Active internet connection
+
+---
+
+## Step 1: Install Azure CLI
+
+Azure CLI is a command-line tool used to create, manage, and interact with Azure resources from your local machine.
+
+### For Windows
+
+**Using MSI Installer:**
+
+1. Visit the [Azure CLI Documentation](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows)
+2. Download the Windows MSI installer
+3. Run the installer and complete the installation
+4. Open **Command Prompt** or **PowerShell**
+5. Verify the installation:
+
+```bash
+az --version
+```
+
+---
+
+## Step 2: Sign in to Azure
+
+After installing Azure CLI, authenticate your local machine with your Azure account.
+
+### Using `az login`
+
+Run the following command:
+
+```bash
+az login
+
