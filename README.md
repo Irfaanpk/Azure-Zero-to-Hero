@@ -52,3 +52,27 @@ This section introduces the fundamentals of cloud computing — what it is, why 
 📂 **[Explore → Introduction to Cloud Computing](./Introduction%20to%20cloud%20computing/)**
 
 ---
+
+## 2. Cloud Deployment and Service Models
+
+This section explains the different ways cloud environments can be deployed and the major cloud service models. It covers Public Cloud, Private Cloud, Hybrid Cloud, IaaS, PaaS, and SaaS, along with their characteristics, benefits, and real-world use cases.
+
+📂 **[Explore → Cloud Deployment and Service Models](./CloudDeployment%20and%20Service%20Models/)**
+
+---
+
+## 3. Introduction to Azure
+
+This section introduces Microsoft Azure and its core concepts. It covers Azure global infrastructure, cloud environments, Regions, Availability Zones, Azure edge locations, and essential Azure services across compute, storage, databases, networking, security, identity, management, and monitoring.
+
+📂 **[Explore → Introduction to Azure](./Introduction%20to%20Azure/)**
+
+---
+
+## 4. Azure Account Structure
+
+This section explains the fundamental structure of an Azure environment. It covers Microsoft Entra tenants, Azure subscriptions, resource groups, Azure resources, and how these components are organized for identity, billing, access control, and resource management.
+
+📂 **[Explore → Azure Account Structure](./Azure%20Account%20Structure/)**
+
+---
