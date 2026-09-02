@@ -117,4 +117,4 @@ This section covers Azure Storage services, storage accounts, Blob Storage, acce
 | 6.12 | [Storage Account Firewall and Network Access](./Azure%20Storage%20Account/Storage%20Account%20Firewall%20and%20Network%20Access/) | Network access rules, firewall configuration, virtual network rules, and private endpoints |
 | 6.13 | [Blob Storage Security and Encryption](./Azure%20Storage%20Account/Blob%20Storage%20Security%20and%20Encryption/) | Storage encryption, Microsoft-managed keys, customer-managed keys, and data protection |
 | 6.14 | [Azure Files](./Azure%20Storage%20Account/Azure%20Files/) | Azure Files overview, file shares, storage options, and use cases |
-| 6.15 | [Azure File Shares and SMB/NFS](./Azure%20Storage%20Account/Azure%20File%20Shares%20and%20SMB%20NFS/) | File shares, SMB, NFS, access, and Azure Files configuration |
+| 6.15 | [Azure File Shares and SMB NFS](./Azure%20Storage%20Account/Azure%20File%20Shares%20and%20SMB%20NFS/) | File shares, SMB, NFS, access, and Azure Files configuration |
