@@ -32,7 +32,7 @@ The tenant is responsible for identity and authentication.
 
 ### Example
 
-**Microsoft Entra Tenant**
+A company can have one Microsoft Entra tenant that contains all its organizational identities:
 
 - Users
 - Groups
@@ -80,7 +80,7 @@ A resource group can contain resources from different Azure services.
 
 ### Example
 
-**Production Resource Group**
+A production application can have a resource group containing:
 
 - Virtual Machine
 - Storage Account
@@ -117,29 +117,99 @@ Resources are created inside resource groups and belong to a subscription.
 
 ---
 
-## Azure Account Structure Example
+## Azure Account Structure Examples
 
-Consider a company with separate development and production environments.
+Here are some common ways organizations can structure their Azure environment.
 
-**Microsoft Entra Tenant**
+### Example 1: Separate Environments
 
-→ **Development Subscription**
+A company can use separate subscriptions for different environments.
 
-→ **Development Resource Group**
+**Development**
 
-→ Virtual Machine  
-→ Storage Account  
-→ Virtual Network
+- Subscription: `Development`
+- Resource Group: `Dev-RG`
+- Resources:
+  - Virtual Machine
+  - Storage Account
+  - Virtual Network
 
-→ **Production Subscription**
+**Production**
 
-→ **Production Resource Group**
+- Subscription: `Production`
+- Resource Group: `Prod-RG`
+- Resources:
+  - Virtual Machine
+  - Storage Account
+  - Azure SQL Database
 
-→ Virtual Machine  
-→ Storage Account  
-→ Azure SQL Database
+This approach helps separate development and production environments and makes access and cost management easier.
 
-This structure allows organizations to separate environments and manage access, resources, and costs more effectively.
+---
+
+### Example 2: Multiple Applications
+
+A company can organize resources based on applications.
+
+**E-Commerce Application**
+
+- Resource Group: `Ecommerce-RG`
+- Resources:
+  - App Service
+  - Azure SQL Database
+  - Storage Account
+  - Virtual Network
+
+**Employee Portal**
+
+- Resource Group: `EmployeePortal-RG`
+- Resources:
+  - App Service
+  - Azure SQL Database
+  - Key Vault
+  - Virtual Network
+
+This approach keeps resources related to each application organized together.
+
+---
+
+### Example 3: Multiple Teams
+
+A company can also organize subscriptions and resource groups based on teams or business units.
+
+**Development Team**
+
+- Subscription: `Development-Subscription`
+- Resource Groups:
+  - `Frontend-RG`
+  - `Backend-RG`
+  - `Database-RG`
+
+**Data Team**
+
+- Subscription: `Data-Subscription`
+- Resource Groups:
+  - `Analytics-RG`
+  - `DataWarehouse-RG`
+
+This can help organizations manage access and responsibilities between different teams.
+
+---
+
+### Example 4: Simple Learning Environment
+
+For learning and practice, you can keep the structure simple.
+
+**Azure Subscription**
+
+- Resource Group: `Learning-RG`
+- Resources:
+  - Virtual Machine
+  - Storage Account
+  - Virtual Network
+  - Key Vault
+
+This is a simple structure for beginners because resources related to learning can be managed from one resource group.
 
 ---
 
@@ -166,13 +236,7 @@ When the application is no longer required, the resource group can be deleted.
 
 The overall Azure structure can be remembered as:
 
-**Tenant**
-
-→ **Subscription**
-
-→ **Resource Group**
-
-→ **Resources**
+**Tenant → Subscription → Resource Group → Resources**
 
 Each level serves a different purpose:
 
@@ -180,20 +244,6 @@ Each level serves a different purpose:
 - **Subscription:** Billing, access, and resource boundary
 - **Resource Group:** Resource organization and management
 - **Resources:** Actual Azure services
-
----
-
-## Azure vs AWS
-
-| Azure | AWS |
-|---|---|
-| Microsoft Entra Tenant | AWS Identity environment |
-| Azure Subscription | AWS Account |
-| Resource Group | No direct equivalent |
-| Azure Resource | AWS Resource |
-| Azure RBAC | IAM permissions |
-
-These are conceptual comparisons and are not exact one-to-one equivalents.
 
 ---
 
