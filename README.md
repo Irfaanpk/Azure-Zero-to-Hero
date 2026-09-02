@@ -99,22 +99,22 @@ This section provides a detailed understanding of Microsoft Entra ID — how ide
 
 ## 6. Azure Storage Account
 
-This section covers Azure Storage services, storage accounts, Blob Storage, access control, data protection, storage security, and Azure Files.
+This section covers Azure Storage, Storage Accounts, Blob Storage, data protection, access control, networking, encryption, and Azure Files.
 
 | # | Sub-Topic | Description |
 |---|-----------|-------------|
 | 6.1 | [Introduction to Azure Storage](./Azure%20Storage%20Account/Introduction%20to%20Azure%20Storage/) | Azure Storage overview, storage services, storage access, and core concepts |
-| 6.2 | [Storage Accounts](./Azure%20Storage%20Account/Storage%20Accounts/) | Storage account types, performance tiers, endpoints, and storage redundancy |
+| 6.2 | [Storage Accounts](./Azure%20Storage%20Account/Storage%20Accounts/) | Storage account types, performance options, endpoints, and storage redundancy |
 | 6.3 | [Azure Blob Storage](./Azure%20Storage%20Account/Azure%20Blob%20Storage/) | Blob Storage, containers, blob types, blob properties, metadata, and storage tiers |
 | 6.4 | [Blob Access Levels](./Azure%20Storage%20Account/Blob%20Access%20Levels/) | Private, Blob, and Container anonymous access levels |
 | 6.5 | [Static Website Hosting](./Azure%20Storage%20Account/Static%20Website%20Hosting/) | Hosting static websites using Azure Blob Storage |
 | 6.6 | [Blob Versioning and Immutability](./Azure%20Storage%20Account/Blob%20Versioning%20and%20Immutability/) | Blob versioning, previous versions, immutable blobs, retention policies, and legal holds |
 | 6.7 | [Blob Soft Delete and Snapshots](./Azure%20Storage%20Account/Blob%20Soft%20Delete%20and%20Snapshots/) | Blob recovery, soft delete, and blob snapshots |
 | 6.8 | [Blob Lifecycle Management](./Azure%20Storage%20Account/Blob%20Lifecycle%20Management/) | Automatically moving and deleting blobs based on lifecycle rules |
-| 6.9 | [Blob Object Replication](./Azure%20Storage%20Account/Blob%20Object%20Replication/) | Replicating blob objects between storage accounts |
+| 6.9 | [Blob Object Replication](./Azure%20Storage%20Account/Blob%20Object%20Replication/) | Replicating block blobs between storage accounts |
 | 6.10 | [SAS and Storage Account Access Keys](./Azure%20Storage%20Account/SAS%20and%20Storage%20Account%20Access%20Keys/) | Shared Access Signatures, access keys, permissions, and controlled storage access |
-| 6.11 | [Azure Storage Explorer](./Azure%20Storage%20Account/Azure%20Storage%20Explorer/) | Managing Azure Storage data using Storage Explorer |
-| 6.12 | [Storage Account Firewall and Network Access](./Azure%20Storage%20Account/Storage%20Account%20Firewall%20and%20Network%20Access/) | Network access rules, firewall configuration, virtual network rules, and private endpoints |
-| 6.13 | [Blob Storage Security and Encryption](./Azure%20Storage%20Account/Blob%20Storage%20Security%20and%20Encryption/) | Storage encryption, Microsoft-managed keys, customer-managed keys, and data protection |
+| 6.11 | [Azure Storage Explorer](./Azure%20Storage%20Account/Azure%20Storage%20Explorer/) | Managing Azure Storage data using Azure Storage Explorer |
+| 6.12 | [Storage Account Firewall and Network Access](./Azure%20Storage%20Account/Storage%20Account%20Firewall%20and%20Network%20Access/) | Firewall rules, IP rules, virtual network rules, public access, and private endpoints |
+| 6.13 | [Blob Storage Security and Encryption](./Azure%20Storage%20Account/Blob%20Storage%20Security%20and%20Encryption/) | Encryption at rest, Microsoft-managed keys, customer-managed keys, infrastructure encryption, and secure transfer |
 | 6.14 | [Azure Files](./Azure%20Storage%20Account/Azure%20Files/) | Azure Files overview, file shares, storage options, and use cases |
-| 6.15 | [Azure File Shares and SMB NFS](./Azure%20File%20Shares%20and%20SMB%20NFS/) | File shares, SMB, NFS, access, and Azure Files configuration |
+| 6.15 | [Azure File Shares and SMB NFS](./Azure%20Storage%20Account/Azure%20File%20Shares%20and%20SMB%20NFS/) | File shares, SMB, NFS, authentication, permissions, mounting, and Azure Files configuration |
