@@ -331,12 +331,14 @@ Security + networking → Networking
 
 Select:
 
-```text Private endpoint connections
+```
+text Private endpoint connections
 ```
 
 Click:
 
-```text + Private endpoint
+```
+text + Private endpoint
 ```
 
 ---
@@ -365,14 +367,16 @@ storage-private-endpoint
 
 For resource type, select:
 
-```text Microsoft.Storage/storageAccounts
+```
+text Microsoft.Storage/storageAccounts
 ```
 
 Select your storage account.
 
 Choose the appropriate storage sub-resource, such as:
 
-```text blob
+```
+text blob
 ```
 
 ---
@@ -381,7 +385,8 @@ Choose the appropriate storage sub-resource, such as:
 
 Select:
 
-```text Virtual Network
+```
+text Virtual Network
 Subnet
 ```
 
@@ -393,17 +398,20 @@ The private endpoint receives a private IP address from the selected subnet.
 
 Click:
 
-```text Review + create
+```
+text Review + create
 ```
 
 Then:
 
-```text Create
+```
+text Create
 ```
 
 After deployment, verify that the private endpoint appears under:
 
-```text Private endpoint connections
+```
+text Private endpoint connections
 ```
 
 ---
