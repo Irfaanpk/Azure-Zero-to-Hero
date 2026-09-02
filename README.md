@@ -47,7 +47,7 @@ By the end of this course, you will be able to:
 
 ## 1. Introduction to Cloud Computing
 
-This section introduces the fundamentals of cloud computing — what it is, why it exists, and how it differs from traditional on-premises IT infrastructure. It covers key characteristics, business benefits, and real-world use cases that form the foundation for understanding modern cloud platforms like AWS.
+This section introduces the fundamentals of cloud computing — what it is, why it exists, and how it differs from traditional on-premises IT infrastructure. It covers key characteristics, business benefits, and real-world use cases that form the foundation for understanding modern cloud platforms like Azure.
 
 📂 **[Explore → Introduction to Cloud Computing](./Introduction%20to%20cloud%20computing/)**
 
