@@ -76,3 +76,20 @@ This section explains the fundamental structure of an Azure environment. It cove
 📂 **[Explore → Azure Account Structure](./Azure%20Account%20Structure/)**
 
 ---
+
+## 5. Microsoft Entra ID
+
+This section provides a detailed understanding of Microsoft Entra ID — how identity and access management work in Azure, and how to manage users, groups, roles, authentication, and access to Azure resources.
+
+📂 **[Explore → Microsoft Entra ID](./Microsoft%20Entra%20ID/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 5.1 | [Introduction to Microsoft Entra ID](./Microsoft%20Entra%20ID/Introduction%20to%20Microsoft%20Entra%20ID/) | Entra ID overview, tenants, directories, and foundational identity concepts |
+| 5.2 | [Users in Microsoft Entra ID](./Microsoft%20Entra%20ID/Users%20in%20Microsoft%20Entra%20ID/) | Creating and managing users, member users, guest users, and user properties |
+| 5.3 | [Groups in Microsoft Entra ID](./Microsoft%20Entra%20ID/Groups%20in%20Microsoft%20Entra%20ID/) | Security groups, Microsoft 365 groups, membership, and group-based access |
+| 5.4 | [Microsoft Entra Roles](./Microsoft%20Entra%20ID/Microsoft%20Entra%20Roles/) | Administrative roles, built-in roles, role assignments, and delegated administration |
+| 5.5 | [Authentication in Microsoft Entra ID](./Microsoft%20Entra%20ID/Authentication%20in%20Microsoft%20Entra%20ID/) | Authentication concepts, authentication methods, and multi-factor authentication |
+| 5.6 | [Azure RBAC](./Microsoft%20Entra%20ID/Azure%20RBAC/) | Azure RBAC, built-in roles, custom roles, and role assignments |
+| 5.7 | [RBAC Scopes](./Microsoft%20Entra%20ID/RBAC%20Scopes/) | Management group, subscription, resource group, and resource scopes |
+| 5.8 | [Managed Identities](./Microsoft%20Entra%20ID/Managed%20Identities/) | System-assigned and user-assigned managed identities for Azure resource access |
