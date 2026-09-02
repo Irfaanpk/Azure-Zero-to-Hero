@@ -104,7 +104,7 @@ This section covers Azure Storage, Storage Accounts, Blob Storage, data protecti
 | # | Sub-Topic | Description |
 |---|-----------|-------------|
 | 6.1 | [Introduction to Azure Storage](./Azure%20Storage%20Account/Introduction%20to%20Azure%20Storage/) | Azure Storage overview, storage services, storage access, and core concepts |
-| 6.2 | [Storage Accounts](./Azure%20Storage%20Account/Storage%20Accounts/) | Storage account types, performance options, endpoints, and storage redundancy |
+| 6.2 | [Storage Accounts](./Azure%20Storage%20Account/Storage%20Accounts/) | Storage account types, performance options, endpoints, storage redundancy, and minimum TLS version |
 | 6.3 | [Azure Blob Storage](./Azure%20Storage%20Account/Azure%20Blob%20Storage/) | Blob Storage, containers, blob types, blob properties, metadata, and storage tiers |
 | 6.4 | [Blob Access Levels](./Azure%20Storage%20Account/Blob%20Access%20Levels/) | Private, Blob, and Container anonymous access levels |
 | 6.5 | [Static Website Hosting](./Azure%20Storage%20Account/Static%20Website%20Hosting/) | Hosting static websites using Azure Blob Storage |
@@ -118,3 +118,4 @@ This section covers Azure Storage, Storage Accounts, Blob Storage, data protecti
 | 6.13 | [Blob Storage Security and Encryption](./Azure%20Storage%20Account/Blob%20Storage%20Security%20and%20Encryption/) | Encryption at rest, Microsoft-managed keys, customer-managed keys, infrastructure encryption, and secure transfer |
 | 6.14 | [Azure Files](./Azure%20Storage%20Account/Azure%20Files/) | Azure Files overview, file shares, storage options, and use cases |
 | 6.15 | [Azure File Shares and SMB NFS](./Azure%20Storage%20Account/Azure%20File%20Shares%20and%20SMB%20NFS/) | File shares, SMB, NFS, authentication, permissions, mounting, and Azure Files configuration |
+| 6.16 | [Azure File Sync](./Azure%20Storage%20Account/Azure%20File%20Sync/) | Synchronizing on-premises file servers with Azure file shares and cloud tiering |
