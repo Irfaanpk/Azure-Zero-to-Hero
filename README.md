@@ -1,15 +1,28 @@
-[Banner](./assets/z2h.jpeg) ([image](./assets/z2h.jpeg))
+<div align="center">
 
-![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![Level](https://img.shields.io/badge/Level-Beginner%20to%20Advanced-purple?style=for-the-badge)
-![Entra ID](https://img.shields.io/badge/Entra%20ID-Identity-blue?style=for-the-badge&logo=microsoft)
-![Storage](https://img.shields.io/badge/Storage-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![Networking](https://img.shields.io/badge/Networking-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![Contributions](https://img.shields.io/badge/Contributions-Welcome-brightgreen?style=for-the-badge)
+<img src="./assets/z2h.jpeg" alt="Azure Zero to Hero Banner">
+
+<br><br>
+
+<img src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white">
+<img src="https://img.shields.io/badge/Level-Beginner%20to%20Advanced-purple?style=for-the-badge">
+<img src="https://img.shields.io/badge/Entra%20ID-Identity-blue?style=for-the-badge&logo=microsoft">
+<img src="https://img.shields.io/badge/Storage-Storage-569A31?style=for-the-badge&logo=microsoftazure&logoColor=white">
+<img src="https://img.shields.io/badge/Networking-Networking-blue?style=for-the-badge&logo=microsoftazure&logoColor=white">
+
+<br>
+
+<img src="https://img.shields.io/badge/Contributions-Welcome-brightgreen?style=for-the-badge">
+
+</div>
+
+<div align="center">
 
 # Azure — Zero to Hero
 
 ### ☁️ From cloud fundamentals to advanced Azure architecture — comprehensive explanations, hands-on labs, and real-world best practices.
+
+</div>
 
 ---
 
