@@ -252,3 +252,23 @@ This section covers Azure Front Door and Azure CDN — global application delive
 | 14.2 | [Azure CDN](./Azure%20Front%20Door%20and%20CDN/Azure%20CDN/) | CDN fundamentals, profiles, endpoints, origins, caching, cache rules, content delivery, and cache invalidation |
 | 14.3 | [Azure Front Door vs Azure CDN](./Azure%20Front%20Door%20and%20CDN/Azure%20Front%20Door%20vs%20Azure%20CDN/) | Differences between Front Door and CDN, use cases, architecture, routing, caching, and when to use each |
 
+---
+
+## 15. Azure Monitor
+
+This section covers Azure Monitor — metrics, logs, Log Analytics, diagnostic settings, data collection, alerts, action groups, insights, and application monitoring.
+
+📂 **[Explore → Azure Monitor](./Azure%20Monitor/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 15.1 | [Introduction to Azure Monitor](./Azure%20Monitor/Introduction%20to%20Azure%20Monitor/) | Azure Monitor overview, monitoring architecture, metrics, logs, and monitoring data |
+| 15.2 | [Azure Monitor Metrics and Logs](./Azure%20Monitor/Azure%20Monitor%20Metrics%20and%20Logs/) | Metrics, platform logs, resource logs, activity logs, and monitoring data types |
+| 15.3 | [Log Analytics and KQL](./Azure%20Monitor/Log%20Analytics%20and%20KQL/) | Log Analytics workspaces, log queries, KQL basics, filtering, sorting, aggregation, and troubleshooting |
+| 15.4 | [Diagnostic Settings](./Azure%20Monitor/Diagnostic%20Settings/) | Resource logs, diagnostic settings, and sending monitoring data to Log Analytics, Storage Accounts, and Event Hubs |
+| 15.5 | [Azure Monitor Agent and Data Collection Rules](./Azure%20Monitor/Azure%20Monitor%20Agent%20and%20Data%20Collection%20Rules/) | Azure Monitor Agent, Data Collection Rules, data sources, and collecting guest OS data |
+| 15.6 | [Azure Monitor Alerts and Action Groups](./Azure%20Monitor/Azure%20Monitor%20Alerts%20and%20Action%20Groups/) | Alert rules, metric and log alerts, alert conditions, Action Groups, and notifications |
+| 15.7 | [Alert Processing Rules](./Azure%20Monitor/Alert%20Processing%20Rules/) | Suppressing, modifying, and controlling alert notifications using processing rules |
+| 15.8 | [Azure Monitor Insights](./Azure%20Monitor/Azure%20Monitor%20Insights/) | VM Insights, Storage Insights, Network Insights, performance monitoring, and resource health information |
+| 15.9 | [Application Insights](./Azure%20Monitor/Application%20Insights/) | Application monitoring, telemetry, availability, performance, failures, and application diagnostics |
+
