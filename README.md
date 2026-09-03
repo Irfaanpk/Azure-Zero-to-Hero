@@ -209,3 +209,17 @@ This section covers Azure container services — container deployment, container
 | 11.1 | [Azure Container Instances](./Azure%20Container%20Services/Azure%20Container%20Instances/) | Container basics, container images, container groups, networking, environment variables, restart policies, and container management |
 | 11.2 | [Azure Container Registry](./Azure%20Container%20Services/Azure%20Container%20Registry/) | Container registries, repositories, images, tags, pushing and pulling images, authentication, and integration with Azure container services |
 | 11.3 | [Azure Container Apps](./Azure%20Container%20Services/Azure%20Container%20Apps/) | Container Apps, environments, revisions, ingress, scaling, environment variables, and containerized application hosting |
+
+---
+
+## 12. Azure Database Services
+
+This section covers Azure database services — managed relational and NoSQL databases, connectivity, configuration, scaling, and basic database management.
+
+📂 **[Explore → Azure Database Services](./Azure%20Database%20Services/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 12.1 | [Azure SQL Database](./Azure%20Database%20Services/Azure%20SQL%20Database/) | Azure SQL Database, databases and servers, deployment options, service tiers, connectivity, firewall, authentication, scaling, and backup basics |
+| 12.2 | [Azure Database for MySQL](./Azure%20Database%20Services/Azure%20Database%20for%20MySQL/) | MySQL Flexible Server, connectivity, authentication, firewall, networking, scaling, and database management |
+| 12.3 | [Azure Cosmos DB](./Azure%20Database%20Services/Azure%20Cosmos%20DB/) | Cosmos DB, NoSQL concepts, databases, containers, partition keys, request units, and global distribution |
