@@ -1,270 +1,235 @@
-# 17.2 ARM Templates
+# 17.3 Bicep
 
-**Azure Resource Manager (ARM) templates** are JSON files that define Azure infrastructure and resources using a **declarative infrastructure-as-code approach**.
+**Bicep** is a declarative infrastructure-as-code language developed by Microsoft for deploying Azure resources.
 
-Instead of creating resources manually through the Azure Portal, you can define the required infrastructure in a template and deploy it through Azure Resource Manager.
+It provides a simpler and more readable alternative to writing ARM templates directly in JSON.
 
 ---
 
-## What is an ARM Template?
+## What is Bicep?
 
-An ARM template is a JSON file that describes:
-
-- Resources to deploy
-- Resource configuration
-- Parameters
-- Variables
-- Dependencies
-- Outputs
+Bicep allows you to define Azure infrastructure using `.bicep` files.
 
 Basic workflow:
 
 ```text
+Bicep File
+    ↓
+Bicep Compiler
+    ↓
 ARM Template
-     ↓
+    ↓
 Azure Resource Manager
-     ↓
-Resource Providers
-     ↓
+    ↓
+Azure Resources
+```
+
+Bicep does **not** replace Azure Resource Manager. It provides a simpler way to define infrastructure that is deployed through ARM.
+
+---
+
+# Why Use Bicep?
+
+ARM templates use JSON, which can become difficult to read when infrastructure becomes large.
+
+### ARM Template
+
+```json
+{
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2023-01-01",
+  "name": "mystorageaccount",
+  "location": "eastus"
+}
+```
+
+### Bicep
+
+```bicep
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: 'mystorageaccount'
+  location: 'eastus'
+}
+```
+
+Bicep is generally:
+
+- Easier to read
+- Less verbose
+- Easier to maintain
+- Easier to reuse
+- Designed specifically for Azure
+
+---
+
+# Bicep File
+
+Bicep files use the:
+
+```text
+.bicep
+```
+
+extension.
+
+Example:
+
+```text
+main.bicep
+```
+
+A Bicep file describes the desired Azure infrastructure.
+
+```text
+main.bicep
+    ↓
+Azure Resource Manager
+    ↓
 Azure Resources
 ```
 
 ---
 
-# Declarative Infrastructure
+# Bicep Resource Declaration
 
-ARM templates describe the **desired state** of your infrastructure.
-
-For example:
-
-```text
-Desired Infrastructure
-
-Resource Group
-     │
-     ├── Storage Account
-     ├── Virtual Network
-     └── Virtual Machine
-```
-
-You define this infrastructure in the template:
-
-```text
-ARM Template
-     ↓
-Azure Resource Manager
-     ↓
-Infrastructure Created
-```
-
-You don't need to manually execute every individual resource creation command.
-
----
-
-# ARM Template Structure
-
-A typical ARM template contains these main sections:
-
-```json
-{
-  "$schema": "...",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {}
-}
-```
-
-The important sections are:
-
-| Section | Purpose |
-|---|---|
-| `$schema` | Defines the template schema |
-| `contentVersion` | Version of the template |
-| `parameters` | Values provided during deployment |
-| `variables` | Reusable values inside the template |
-| `resources` | Azure resources to deploy |
-| `outputs` | Values returned after deployment |
-
----
-
-# 1. `$schema`
-
-The `$schema` property identifies the ARM template schema.
+A resource is declared using the `resource` keyword.
 
 Example:
 
-```json
-"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#"
-```
-
-It helps tools understand the structure and syntax of the template.
-
----
-
-# 2. contentVersion
-
-`contentVersion` identifies the version of the template.
-
-Example:
-
-```json
-"contentVersion": "1.0.0.0"
-```
-
-You can update this value when the template structure changes.
-
----
-
-# 3. Parameters
-
-**Parameters** allow values to be provided when the template is deployed.
-
-Example:
-
-```json
-"parameters": {
-  "storageAccountName": {
-    "type": "string"
+```bicep
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: 'mystorageaccount123'
+  location: 'eastus'
+  sku: {
+    name: 'Standard_LRS'
   }
+  kind: 'StorageV2'
 }
 ```
 
-During deployment:
+The structure is:
 
 ```text
-ARM Template
-     │
-     ├── storageAccountName
-     │
-     ▼
-User provides value
-     │
-     ▼
-Resource Created
+resource
+    ↓
+Resource Name
+    ↓
+Resource Type
+    ↓
+API Version
+    ↓
+Resource Configuration
 ```
-
-Parameters make templates reusable.
-
-For example, the same template can be used for:
-
-```text
-Development
-     ↓
-devstorage001
-
-Testing
-     ↓
-teststorage001
-
-Production
-     ↓
-prodstorage001
-```
-
----
-
-# 4. Variables
-
-**Variables** store reusable values inside the template.
-
-Example:
-
-```json
-"variables": {
-  "storageSku": "Standard_LRS"
-}
-```
-
-A variable can be referenced elsewhere in the template.
-
-```text
-Variable
-   ↓
-storageSku
-   ↓
-Standard_LRS
-```
-
-Variables help avoid repeating values.
-
----
-
-# 5. Resources
-
-The `resources` section defines the Azure resources that should be created or configured.
-
-Example:
-
-```json
-"resources": [
-  {
-    "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2023-01-01",
-    "name": "[parameters('storageAccountName')]",
-    "location": "[resourceGroup().location]",
-    "sku": {
-      "name": "[variables('storageSku')]"
-    },
-    "kind": "StorageV2"
-  }
-]
-```
-
-Important properties include:
-
-- `type`
-- `apiVersion`
-- `name`
-- `location`
-- Resource-specific properties
 
 ---
 
 # Resource Type
 
-The `type` property identifies which Azure resource is being deployed.
-
 Example:
 
-```json
-"type": "Microsoft.Storage/storageAccounts"
+```bicep
+'Microsoft.Storage/storageAccounts@2023-01-01'
 ```
 
-Another example:
-
-```json
-"type": "Microsoft.Network/virtualNetworks"
-```
-
-The format is:
+Here:
 
 ```text
-Resource Provider / Resource Type
+Microsoft.Storage
+        ↓
+Resource Provider
+
+storageAccounts
+        ↓
+Resource Type
+
+2023-01-01
+        ↓
+API Version
 ```
 
 ---
 
-# API Version
+# Parameters
 
-The `apiVersion` specifies the Azure resource API version used by the template.
+**Parameters** allow values to be supplied during deployment.
 
 Example:
 
-```json
-"apiVersion": "2023-01-01"
+```bicep
+param location string = 'eastus'
+
+param storageAccountName string
 ```
 
-Different resource types support different API versions.
+The same Bicep file can then be used with different values.
+
+```text
+Development
+    ↓
+devstorage001
+
+Production
+    ↓
+prodstorage001
+```
+
+This makes Bicep templates reusable.
 
 ---
 
-# Resource Dependencies
+# Variables
 
-Some Azure resources depend on other resources.
+**Variables** store reusable values inside a Bicep file.
 
-For example:
+Example:
+
+```bicep
+var storageSku = 'Standard_LRS'
+```
+
+The variable can then be used by resources:
+
+```bicep
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: storageAccountName
+  location: location
+  sku: {
+    name: storageSku
+  }
+  kind: 'StorageV2'
+}
+```
+
+---
+
+# Resource Properties
+
+Resources contain properties that define their configuration.
+
+Example:
+
+```bicep
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: storageAccountName
+  location: location
+
+  sku: {
+    name: 'Standard_LRS'
+  }
+
+  kind: 'StorageV2'
+}
+```
+
+Different Azure resource types have different properties.
+
+---
+
+# Dependencies
+
+Bicep can automatically determine dependencies when one resource references another.
+
+Example:
 
 ```text
 VNet
@@ -276,127 +241,126 @@ NIC
 VM
 ```
 
-ARM can determine dependencies from resource references.
+If a resource directly references another resource, Bicep can infer the deployment dependency.
 
-You can also explicitly specify a dependency using `dependsOn`.
+You can also explicitly define dependencies using:
 
-Example:
-
-```json
-"dependsOn": [
-  "[resourceId('Microsoft.Network/virtualNetworks', 'myVNet')]"
+```bicep
+dependsOn: [
+  resourceName
 ]
 ```
 
-This tells ARM that the resource should be deployed after the specified resource.
-
----
-
-# ARM Template Functions
-
-ARM templates provide functions for dynamically generating values.
-
-Common functions include:
-
-| Function | Purpose |
-|---|---|
-| `parameters()` | Access parameter values |
-| `variables()` | Access variables |
-| `resourceGroup()` | Get resource group information |
-| `subscription()` | Get subscription information |
-| `resourceId()` | Generate a resource ID |
-| `concat()` | Combine strings |
-| `format()` | Format strings |
-| `uniqueString()` | Generate a deterministic unique string |
-
-Example:
-
-```json
-"name": "[parameters('storageAccountName')]"
-```
+Explicit dependencies should generally be used only when Bicep cannot infer the dependency automatically.
 
 ---
 
 # Outputs
 
-The `outputs` section returns values after deployment.
+**Outputs** return values from a deployment.
 
 Example:
 
-```json
-"outputs": {
-  "storageAccountName": {
-    "type": "string",
-    "value": "[parameters('storageAccountName')]"
-  }
-}
+```bicep
+output storageAccountName string = storageAccount.name
 ```
 
 After deployment:
 
 ```text
-ARM Deployment
-      ↓
-Outputs
-      ↓
+Bicep Deployment
+       ↓
+     Outputs
+       ↓
 Storage Account Name
 ```
 
-Outputs can be useful when another deployment or user needs information about the deployed resources.
+Outputs can be useful when you need to expose information about deployed resources.
 
 ---
 
-# Complete ARM Template Example
+# Modules
 
-The following template creates a basic storage account:
+**Modules** allow large Bicep deployments to be divided into smaller reusable files.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
+Example:
 
-  "parameters": {
-    "storageAccountName": {
-      "type": "string"
-    }
-  },
+```text
+main.bicep
+    │
+    ├── network.bicep
+    ├── storage.bicep
+    └── virtual-machine.bicep
+```
 
-  "variables": {
-    "storageSku": "Standard_LRS"
-  },
+Workflow:
 
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2023-01-01",
-      "name": "[parameters('storageAccountName')]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "[variables('storageSku')]"
-      },
-      "kind": "StorageV2"
-    }
-  ],
+```text
+main.bicep
+    ↓
+Modules
+    ↓
+Azure Resources
+```
 
-  "outputs": {
-    "storageAccountName": {
-      "type": "string",
-      "value": "[parameters('storageAccountName')]"
-    }
-  }
-}
+Modules help organize larger infrastructure projects.
+
+---
+
+# Bicep Expressions and Functions
+
+Bicep provides expressions and functions for dynamically generating values.
+
+Common examples include:
+
+| Function | Purpose |
+|---|---|
+| `resourceGroup()` | Access resource group information |
+| `subscription()` | Access subscription information |
+| `resourceId()` | Generate a resource ID |
+| `uniqueString()` | Generate a deterministic unique string |
+| `format()` | Format strings |
+| `concat()` | Combine strings |
+
+Example:
+
+```bicep
+var storageName = 'storage${uniqueString(resourceGroup().id)}'
 ```
 
 ---
 
-# Deploying an ARM Template
+# Existing Resources
 
-ARM templates can be deployed using:
+Bicep can reference resources that already exist without deploying them.
+
+Example:
+
+```bicep
+resource existingVnet 'Microsoft.Network/virtualNetworks@2024-01-01' existing = {
+  name: 'myVNet'
+}
+```
+
+The `existing` keyword tells Bicep that the resource already exists.
+
+```text
+Existing Azure Resource
+        ↓
+      Bicep
+        ↓
+Reference Resource
+```
+
+---
+
+# Bicep Deployment
+
+Bicep files can be deployed using:
 
 - Azure Portal
 - Azure CLI
 - Azure PowerShell
-- Azure REST APIs
 - CI/CD pipelines
 
 Example using Azure CLI:
@@ -404,220 +368,85 @@ Example using Azure CLI:
 ```bash
 az deployment group create \
   --resource-group myResourceGroup \
-  --template-file template.json
+  --template-file main.bicep
 ```
 
-With a parameter:
+With parameters:
 
 ```bash
 az deployment group create \
   --resource-group myResourceGroup \
-  --template-file template.json \
+  --template-file main.bicep \
   --parameters storageAccountName=mystorageaccount123
 ```
 
 ---
 
-# Template Deployment Workflow
+# Validate a Bicep File
 
-```text
-Create ARM Template
-        ↓
-Define Parameters
-        ↓
-Define Variables
-        ↓
-Define Resources
-        ↓
-Validate Template
-        ↓
-Deploy Template
-        ↓
-Azure Resource Manager
-        ↓
-Resources Created / Updated
-        ↓
-Review Outputs
-```
-
----
-
-# Incremental Deployment
-
-ARM templates can be deployed using **incremental deployment mode**.
-
-In incremental mode:
-
-```text
-Existing Resources
-       +
-Resources in Template
-       ↓
-Resources Created / Updated
-```
-
-Resources that are not defined in the template are not automatically removed simply because they are absent from the template.
-
-Example:
-
-```text
-Resource Group
-
-Existing:
-├── VM
-├── Storage Account
-└── VNet
-
-Template:
-├── VM
-└── VNet
-
-Incremental Deployment
-        ↓
-
-VM       → Updated if required
-VNet     → Updated if required
-Storage  → Remains
-```
-
----
-
-# Complete Deployment Mode
-
-ARM also supports **complete deployment mode** in applicable deployment scenarios.
-
-Historically, complete mode could remove resources from a resource group that were not included in the template.
-
-Because behavior and availability can vary by deployment scope and current Azure tooling, verify the current Microsoft documentation before using complete mode in production.
-
-For normal learning and day-to-day ARM deployments, **incremental mode** is the important concept to understand.
-
----
-
-# ARM Template Validation
-
-Before deploying infrastructure, you can validate the template.
-
-Example:
+You can validate a deployment before creating resources.
 
 ```bash
 az deployment group validate \
   --resource-group myResourceGroup \
-  --template-file template.json
+  --template-file main.bicep
 ```
 
-Validation can help identify template or configuration problems before creating resources.
+This helps identify configuration and template problems before deployment.
 
 ---
 
-# ARM Template Advantages
-
-### Repeatable Deployments
-
-The same template can be deployed multiple times.
+# What Happens During Deployment?
 
 ```text
-One Template
-     │
-     ├── Development
-     ├── Testing
-     └── Production
-```
-
-### Consistency
-
-Resources can be deployed using the same configuration.
-
-### Infrastructure as Code
-
-Infrastructure is stored as code and can be managed using source control.
-
-### Automation
-
-Templates can be deployed through scripts and CI/CD pipelines.
-
-### Dependency Management
-
-ARM can manage relationships and dependencies between resources.
-
----
-
-# ARM Templates vs Azure Portal
-
-| Azure Portal | ARM Template |
-|---|---|
-| Manual deployment | Automated deployment |
-| GUI-based | Code-based |
-| More repetitive | Repeatable |
-| Harder to standardize | Easy to standardize |
-| Configuration entered manually | Configuration defined in code |
-
----
-
-# ARM Templates vs Azure CLI
-
-| Azure CLI | ARM Template |
-|---|---|
-| Imperative commands | Declarative configuration |
-| Executes commands | Defines desired infrastructure |
-| Good for individual operations | Good for repeatable deployments |
-| Script-based | Template-based |
-
-Example CLI approach:
-
-```bash
-az storage account create ...
-az network vnet create ...
-az vm create ...
-```
-
-ARM approach:
-
-```text
-ARM Template
-     ↓
-Define all required resources
-     ↓
-Single deployment
-```
-
----
-
-# ARM Templates vs Bicep
-
-| ARM Templates | Bicep |
-|---|---|
-| JSON-based | Bicep language |
-| More verbose | More concise |
-| Native ARM template format | Compiles to ARM templates |
-| More difficult to read | Easier to read |
-| Azure-native | Azure-native |
-
-Example:
-
-```text
-Bicep
-  ↓
-Compilation
-  ↓
-ARM Template
-  ↓
+main.bicep
+    ↓
+Bicep Processing
+    ↓
+ARM Template Representation
+    ↓
 Azure Resource Manager
-  ↓
+    ↓
+Resource Providers
+    ↓
 Azure Resources
 ```
 
-Bicep is covered in detail in **17.3 — Bicep**.
+Bicep is therefore integrated directly with the Azure Resource Manager deployment model.
+
+---
+
+# Bicep Example
+
+The following Bicep file creates a storage account:
+
+```bicep
+param storageAccountName string
+param location string = resourceGroup().location
+
+var storageSku = 'Standard_LRS'
+
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: storageAccountName
+  location: location
+  sku: {
+    name: storageSku
+  }
+  kind: 'StorageV2'
+}
+
+output storageAccountId string = storageAccount.id
+```
 
 ---
 
 # Practical Lab
 
-## Lab — Deploy an Azure Storage Account Using an ARM Template
+## Lab — Deploy Azure Resources Using Bicep
 
 ### Objective
 
-Create an ARM template that deploys a storage account and deploy it using Azure CLI.
+Create a Bicep file that deploys an Azure Storage Account and deploy it using Azure CLI.
 
 ### Steps
 
@@ -625,81 +454,130 @@ Create an ARM template that deploys a storage account and deploy it using Azure 
 
 ```bash
 az group create \
-  --name arm-lab-rg \
+  --name bicep-lab-rg \
   --location eastus
 ```
 
-2. Create a file named:
+2. Create a file:
 
 ```text
-template.json
+main.bicep
 ```
 
-3. Add an ARM template that defines a storage account.
+3. Add the Bicep storage account configuration.
 
-4. Validate the template:
+4. Validate the Bicep deployment:
 
 ```bash
 az deployment group validate \
-  --resource-group arm-lab-rg \
-  --template-file template.json
+  --resource-group bicep-lab-rg \
+  --template-file main.bicep \
+  --parameters storageAccountName=mystorageaccount123
 ```
 
-5. Deploy the template:
+5. Deploy the Bicep file:
 
 ```bash
 az deployment group create \
-  --resource-group arm-lab-rg \
-  --template-file template.json
+  --resource-group bicep-lab-rg \
+  --template-file main.bicep \
+  --parameters storageAccountName=mystorageaccount123
 ```
 
-6. Verify the deployment:
+6. Verify the deployed resource:
 
 ```bash
 az resource list \
-  --resource-group arm-lab-rg \
+  --resource-group bicep-lab-rg \
   --output table
 ```
 
-7. Verify the storage account in the Azure Portal.
-
-8. Review the deployment under:
+7. Check the deployment in the Azure Portal:
 
 ```text
 Resource Group
     ↓
 Deployments
     ↓
-ARM Deployment
+Bicep Deployment
 ```
+
+8. Verify the storage account.
 
 9. Delete the resource group after completing the lab:
 
 ```bash
 az group delete \
-  --name arm-lab-rg \
+  --name bicep-lab-rg \
   --yes
+```
+
+---
+
+# Bicep vs ARM Templates
+
+| Bicep | ARM Templates |
+|---|---|
+| Bicep language | JSON |
+| `.bicep` file | `.json` file |
+| Less verbose | More verbose |
+| Easier to read | More difficult to read |
+| Supports modules | Supports nested/linked templates |
+| Compiles to ARM template representation | Native ARM deployment format |
+| Designed specifically for Azure | Native Azure deployment format |
+
+---
+
+# Bicep vs Azure CLI
+
+| Bicep | Azure CLI |
+|---|---|
+| Declarative | Primarily command-based |
+| Defines desired infrastructure | Executes commands |
+| Good for infrastructure as code | Good for individual operations and scripting |
+| Reusable templates | Command/script based |
+| Supports resource dependencies | Commands execute in sequence |
+
+Example:
+
+```text
+Bicep
+  ↓
+Define desired state
+  ↓
+Deploy infrastructure
+```
+
+Whereas:
+
+```text
+Azure CLI
+  ↓
+Run commands
+  ↓
+Create / modify resources
 ```
 
 ---
 
 # Key Points
 
-- **ARM templates** define Azure infrastructure using JSON.
-- ARM templates use a **declarative** approach.
-- Main sections include `parameters`, `variables`, `resources`, and `outputs`.
-- Parameters make templates reusable.
-- Variables store reusable values.
-- Resources define what Azure resources should be deployed.
-- `dependsOn` can define explicit resource dependencies.
-- ARM template functions dynamically generate values.
-- ARM templates can be deployed through Portal, CLI, PowerShell, APIs, and CI/CD pipelines.
-- **Incremental deployment** is the commonly used deployment mode.
-- ARM templates provide repeatable and consistent infrastructure deployment.
-- **Bicep** provides a simpler way to define Azure infrastructure and compiles to ARM template JSON.
+- **Bicep** is Microsoft's declarative infrastructure-as-code language for Azure.
+- Bicep uses `.bicep` files.
+- Bicep is simpler and less verbose than ARM template JSON.
+- Bicep deployments are processed through **Azure Resource Manager**.
+- `resource` defines Azure resources.
+- `param` defines deployment parameters.
+- `var` defines reusable variables.
+- `output` returns deployment values.
+- Bicep supports modules for reusable infrastructure components.
+- Bicep can automatically determine many resource dependencies.
+- The `existing` keyword allows Bicep to reference existing resources.
+- Bicep can be deployed using Azure CLI, PowerShell, Portal, and CI/CD pipelines.
+- Bicep is compiled into an ARM-compatible deployment representation.
 
 ---
 
 ## Next
 
-➡️ **17.3 — Bicep**
+➡️ **17.4 — ARM Templates vs Bicep**
