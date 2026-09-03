@@ -272,3 +272,19 @@ This section covers Azure Monitor — metrics, logs, Log Analytics, diagnostic s
 | 15.8 | [Azure Monitor Insights](./Azure%20Monitor/Azure%20Monitor%20Insights/) | VM Insights, Storage Insights, Network Insights, performance monitoring, and resource health information |
 | 15.9 | [Application Insights](./Azure%20Monitor/Application%20Insights/) | Application monitoring, telemetry, availability, performance, failures, and application diagnostics |
 
+---
+
+## 16. Azure Backup and Site Recovery
+
+This section covers Azure Backup and Azure Site Recovery — backup vaults, backup policies, backup and restore operations, disaster recovery, replication, and failover.
+
+📂 **[Explore → Azure Backup and Site Recovery](./Azure%20Backup%20and%20Site%20Recovery/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 16.1 | [Azure Backup](./Azure%20Backup%20and%20Site%20Recovery/Azure%20Backup/) | Azure Backup overview, supported workloads, backup architecture, Recovery Services vaults, and Backup vaults |
+| 16.2 | [Backup Policies](./Azure%20Backup%20and%20Site%20Recovery/Backup%20Policies/) | Backup policies, schedules, retention, recovery points, and backup configuration |
+| 16.3 | [Backup and Restore](./Azure%20Backup%20and%20Site%20Recovery/Backup%20and%20Restore/) | Creating backups, on-demand backups, restore operations, restore options, and recovery |
+| 16.4 | [Azure Site Recovery](./Azure%20Backup%20and%20Site%20Recovery/Azure%20Site%20Recovery/) | Disaster recovery, replication, recovery plans, failover, test failover, and failback |
+| 16.5 | [Backup Monitoring and Alerts](./Azure%20Backup%20and%20Site%20Recovery/Backup%20Monitoring%20and%20Alerts/) | Backup monitoring, backup jobs, backup health, alerts, and backup reports |
+
