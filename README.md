@@ -145,3 +145,26 @@ This section covers Azure Virtual Network — VNet architecture, address spaces,
 | 7.11 | [NAT Gateway](./Azure%20Virtual%20Network/NAT%20Gateway/) | Outbound internet connectivity, SNAT, public IP association, and NAT Gateway configuration |
 | 7.12 | [Azure Bastion](./Azure%20Virtual%20Network/Azure%20Bastion/) | Secure RDP and SSH access to Azure VMs without exposing management ports to the internet |
 | 7.13 | [Azure Network Watcher](./Azure%20Virtual%20Network/Azure%20Network%20Watcher/) | Network diagnostics, IP Flow Verify, Next Hop, Connection Troubleshoot, and network topology |
+
+---
+
+## 8. Azure Virtual Machines
+
+This section covers Azure Virtual Machines — VM fundamentals, lifecycle management, sizing, access, availability, web hosting, load balancing, and scaling.
+
+📂 **[Explore → Azure Virtual Machines](./Azure%20Virtual%20Machines/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 8.1 | [Introduction to Azure Virtual Machines](./Azure%20Virtual%20Machines/Introduction%20to%20Azure%20Virtual%20Machines/) | Azure VM fundamentals, architecture, images, components, lifecycle, and VM creation |
+| 8.2 | [VM States and Actions](./Azure%20Virtual%20Machines/VM%20States%20and%20Actions/) | VM states, start, stop, deallocate, restart, redeploy, delete, and billing implications |
+| 8.3 | [VM Sizes and Pricing Options](./Azure%20Virtual%20Machines/VM%20Sizes%20and%20Pricing%20Options/) | VM sizes, size families, resizing, Pay-as-you-go, Reservations, Savings Plan, and Spot VMs |
+| 8.4 | [SSH Keys and VM Access](./Azure%20Virtual%20Machines/SSH%20Keys%20and%20VM%20Access/) | SSH keys, PuTTY, PuTTYgen, SSH, RDP, authentication, Bastion, and Run Command |
+| 8.5 | [VM Availability and Placement](./Azure%20Virtual%20Machines/VM%20Availability%20and%20Placement/) | Availability Sets, Fault Domains, Update Domains, Availability Zones, and Dedicated Host |
+| 8.6 | [Web Servers on Azure VMs](./Azure%20Virtual%20Machines/Web%20Servers%20on%20Azure%20VMs/) | Installing and configuring Apache, Nginx, and IIS on Azure Virtual Machines |
+| 8.7 | [Multiple Websites on a Single VM](./Azure%20Virtual%20Machines/Multiple%20Websites%20on%20a%20Single%20VM/) | Hosting multiple websites using hostnames, ports, virtual hosts, and web-server configuration |
+| 8.8 | [VM Extensions and Custom Script](./Azure%20Virtual%20Machines/VM%20Extensions%20and%20Custom%20Script/) | VM Extensions, Custom Script Extension, Run Command, and automated software installation |
+| 8.9 | [Azure Load Balancer](./Azure%20Virtual%20Machines/Azure%20Load%20Balancer/) | Load balancing, frontend IP, backend pools, health probes, rules, inbound NAT, and outbound rules |
+| 8.10 | [Azure Application Gateway](./Azure%20Virtual%20Machines/Azure%20Application%20Gateway/) | Layer 7 load balancing, listeners, routing rules, backend pools, health probes, HTTPS, and WAF basics |
+| 8.11 | [VM Scale Sets](./Azure%20Virtual%20Machines/VM%20Scale%20Sets/) | VMSS architecture, instances, scaling, instance management, and flexible orchestration |
+| 8.12 | [VMSS Load Balancing & Autoscaling](./Azure%20Virtual%20Machines/VMSS%20Load%20Balancing%20and%20Autoscaling/) | VMSS load balancing, health probes, autoscaling, scale-out, scale-in, alerts, Action Groups, and email notifications |
