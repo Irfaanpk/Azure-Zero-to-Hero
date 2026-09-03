@@ -195,3 +195,17 @@ This section covers Azure App Service — web applications, App Service Plans, c
 |---|-----------|-------------|
 | 10.1 | [Introduction to Azure App Service](./Azure%20App%20Service/Introduction%20to%20Azure%20App%20Service/) | App Service, App Service Plans, Web Apps, application stacks, configuration, scaling, networking, security, and deployment |
 | 10.2 | [Deployment Slots](./Azure%20App%20Service/Deployment%20Slots/) | Production and staging slots, slot settings, deployment, testing, swapping, swap with preview, and rollback |
+
+---
+
+## 11. Azure Container Services
+
+This section covers Azure container services — container deployment, container images, Azure Container Instances, Azure Container Registry, and containerized application hosting.
+
+📂 **[Explore → Azure Container Services](./Azure%20Container%20Services/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 11.1 | [Azure Container Instances](./Azure%20Container%20Services/Azure%20Container%20Instances/) | Container basics, container images, container groups, networking, environment variables, restart policies, and container management |
+| 11.2 | [Azure Container Registry](./Azure%20Container%20Services/Azure%20Container%20Registry/) | Container registries, repositories, images, tags, pushing and pulling images, authentication, and integration with Azure container services |
+| 11.3 | [Azure Container Apps](./Azure%20Container%20Services/Azure%20Container%20Apps/) | Container Apps, environments, revisions, ingress, scaling, environment variables, and containerized application hosting |
