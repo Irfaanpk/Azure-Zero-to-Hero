@@ -318,3 +318,69 @@ This section covers Azure Functions — serverless computing, function apps, tri
 | 18.3 | [Function App Configuration and Hosting](./Azure%20Functions/Function%20App%20Configuration%20and%20Hosting/) | Application settings, runtime configuration, hosting plans, scaling, and networking |
 | 18.4 | [Azure Functions Deployment](./Azure%20Functions/Azure%20Functions%20Deployment/) | Deploying functions, deployment methods, configuration, and basic deployment management |
 
+---
+
+## 🛠️ Prerequisites
+
+- Basic understanding of cloud computing concepts
+- Basic understanding of networking concepts such as VNet, Subnets, NSGs, and IP addressing
+- Familiarity with Linux commands and terminal usage
+- Basic understanding of virtual machines and SSH/RDP access
+- An active Microsoft Azure account with permission to create and manage Azure resources
+- Basic knowledge of JSON and YAML is helpful for ARM templates and Bicep
+- Basic Git and GitHub knowledge is recommended
+
+Before diving in, make sure you have:
+
+| **Requirement** | **Details** |
+| ---------------- | ----------- |
+| Azure Account | Azure account with an active subscription |
+| Azure Portal | Access to [Azure Portal](https://portal.azure.com/) |
+| Azure CLI | Installed and configured (`az login`) |
+| Basic Linux | Comfortable with terminal commands |
+| Git | Installed for cloning and managing the repository |
+| GitHub Account | Required for cloning and contributing to the repository |
+| Text Editor | VS Code or similar for editing configuration, JSON, and Bicep files |
+
+---
+
+# 🚦 Getting Started
+
+```bash
+# Clone this repository
+git clone https://github.com/Irfaanpk/Azure-Zero-to-Hero.git
+
+# Navigate into the project
+cd Azure-Zero-to-Hero
+
+# Start with the first section
+cd "Introduction to cloud computing"
+```
+
+Each folder contains its own `README.md` with step-by-step explanations, diagrams, Azure Portal walkthroughs, CLI commands, and hands-on labs where applicable.
+
+Work through the sections in order for the best learning experience.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+If you have suggestions for improvements, new examples, better explanations, or find any issues, feel free to:
+
+- Open an issue
+- Submit a pull request
+- Improve existing documentation
+- Add useful examples or diagrams
+
+Please keep contributions beginner-friendly, accurate, and consistent with the structure of this repository.
+
+---
+
+**Happy Cloud Building! ☁️**
+
+*If this repo helped you, please consider giving it a ⭐*
+
+
+
