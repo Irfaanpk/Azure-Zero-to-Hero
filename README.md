@@ -119,3 +119,23 @@ This section covers Azure Storage, Storage Accounts, Blob Storage, data protecti
 | 6.14 | [Azure Files](./Azure%20Storage%20Account/Azure%20Files/) | Azure Files overview, file shares, storage options, and use cases |
 | 6.15 | [Azure File Shares and SMB NFS](./Azure%20Storage%20Account/Azure%20File%20Shares%20and%20SMB%20NFS/) | File shares, SMB, NFS, authentication, permissions, mounting, and Azure Files configuration |
 | 6.16 | [Azure File Sync](./Azure%20Storage%20Account/Azure%20File%20Sync/) | Synchronizing on-premises file servers with Azure file shares and cloud tiering |
+
+---
+
+## 7. Azure Virtual Network
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 7.1 | [Introduction to Azure Virtual Network](./Introduction%20to%20Azure%20Virtual%20Network/) | Azure VNet fundamentals, architecture, components, and core networking concepts |
+| 7.2 | [VNet Address Space and Subnets](./VNet%20Address%20Space%20and%20Subnets/) | Address spaces, CIDR, IPv4, IPv6, subnets, and IP address planning |
+| 7.3 | [Network Interfaces and IP Addressing](./Network%20Interfaces%20and%20IP%20Addressing/) | NICs, private and public IPs, dynamic and static IPs, and IP configurations |
+| 7.4 | [Network Security Groups and Application Security Groups](./Network%20Security%20Groups%20and%20Application%20Security%20Groups/) | NSGs, ASGs, inbound and outbound rules, priorities, and traffic filtering |
+| 7.5 | [Route Tables and User-Defined Routes](./Route%20Tables%20and%20User-Defined%20Routes/) | System routes, route tables, UDRs, next-hop types, and custom routing |
+| 7.6 | [VNet Peering](./VNet%20Peering/) | VNet-to-VNet connectivity, regional and global peering, Gateway Transit, and Service Chaining |
+| 7.7 | [VPN Gateway](./VPN%20Gateway/) | Site-to-Site VPN, Point-to-Site VPN, VPN gateways, connections, and local network gateways |
+| 7.8 | [Azure Virtual WAN](./Azure%20Virtual%20WAN/) | Virtual WAN, virtual hubs, VNet connections, hub-to-hub connectivity, and centralized networking |
+| 7.9 | [Service Endpoints](./Service%20Endpoints/) | Secure VNet access to supported Azure services through service endpoints |
+| 7.10 | [Private Endpoints and Private Link](./Private%20Endpoints%20and%20Private%20Link/) | Private endpoints, private IP access, Private Link, and private connectivity to Azure services |
+| 7.11 | [NAT Gateway](./NAT%20Gateway/) | Outbound internet connectivity, SNAT, public IP association, and NAT Gateway configuration |
+| 7.12 | [Azure Bastion](./Azure%20Bastion/) | Secure RDP and SSH access to Azure VMs without exposing management ports to the internet |
+| 7.13 | [Azure Network Watcher](./Azure%20Network%20Watcher/) | Network diagnostics, IP Flow Verify, Next Hop, Connection Troubleshoot, and network topology |
