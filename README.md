@@ -223,3 +223,17 @@ This section covers Azure database services — managed relational and NoSQL dat
 | 12.1 | [Azure SQL Database](./Azure%20Database%20Services/Azure%20SQL%20Database/) | Azure SQL Database, databases and servers, deployment options, service tiers, connectivity, firewall, authentication, scaling, and backup basics |
 | 12.2 | [Azure Database for MySQL](./Azure%20Database%20Services/Azure%20Database%20for%20MySQL/) | MySQL Flexible Server, connectivity, authentication, firewall, networking, scaling, and database management |
 | 12.3 | [Azure Cosmos DB](./Azure%20Database%20Services/Azure%20Cosmos%20DB/) | Cosmos DB, NoSQL concepts, databases, containers, partition keys, request units, and global distribution |
+
+---
+
+## 13. Azure DNS and Traffic Manager
+
+This section covers Azure DNS and Traffic Manager — DNS zones, DNS records, private DNS, DNS resolution, traffic routing, endpoints, routing methods, health probes, and failover.
+
+📂 **[Explore → Azure DNS and Traffic Manager](./Azure%20DNS%20and%20Traffic%20Manager/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 13.1 | [Azure DNS](./Azure%20DNS%20and%20Traffic%20Manager/Azure%20DNS/) | DNS zones, DNS records, public and private DNS zones, DNS resolution, and VNet integration |
+| 13.2 | [Azure Traffic Manager](./Azure%20DNS%20and%20Traffic%20Manager/Azure%20Traffic%20Manager/) | Traffic Manager profiles, endpoints, routing methods, health probes, and traffic failover |
+| 13.3 | [Azure DNS and Traffic Manager Comparison](./Azure%20DNS%20and%20Traffic%20Manager/Azure%20DNS%20and%20Traffic%20Manager%20Comparison/) | Azure DNS vs Traffic Manager, DNS hosting vs traffic routing, and when to use each service |
