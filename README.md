@@ -290,7 +290,7 @@ This section covers Azure Backup and Azure Site Recovery — backup vaults, back
 
 ---
 
-# 17. Azure Resource Manager and Infrastructure as Code
+## 17. Azure Resource Manager and Infrastructure as Code
 
 This section covers Azure Resource Manager (ARM) and infrastructure as code — resource deployments, ARM templates, Bicep, and declarative Azure infrastructure management.
 
@@ -305,7 +305,7 @@ This section covers Azure Resource Manager (ARM) and infrastructure as code — 
 
 ---
 
-# 18. Azure Functions
+## 18. Azure Functions
 
 This section covers Azure Functions — serverless computing, function apps, triggers, bindings, hosting, configuration, and scaling.
 
