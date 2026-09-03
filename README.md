@@ -288,3 +288,18 @@ This section covers Azure Backup and Azure Site Recovery — backup vaults, back
 | 16.4 | [Azure Site Recovery](./Azure%20Backup%20and%20Site%20Recovery/Azure%20Site%20Recovery/) | Disaster recovery, replication, recovery plans, failover, test failover, and failback |
 | 16.5 | [Backup Monitoring and Alerts](./Azure%20Backup%20and%20Site%20Recovery/Backup%20Monitoring%20and%20Alerts/) | Backup monitoring, backup jobs, backup health, alerts, and backup reports |
 
+---
+
+# 17. Azure Resource Manager and Infrastructure as Code
+
+This section covers Azure Resource Manager (ARM) and infrastructure as code — resource deployments, ARM templates, Bicep, and declarative Azure infrastructure management.
+
+📂 **[Explore → Azure Resource Manager and Infrastructure as Code](./Azure%20Resource%20Manager%20and%20Infrastructure%20as%20Code/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 17.1 | [Azure Resource Manager](./Azure%20Resource%20Manager%20and%20Infrastructure%20as%20Code/Azure%20Resource%20Manager/) | ARM architecture, resource providers, resource types, deployments, templates, and resource management |
+| 17.2 | [ARM Templates](./Azure%20Resource%20Manager%20and%20Infrastructure%20as%20Code/ARM%20Templates/) | ARM template structure, parameters, variables, resources, outputs, expressions, and deployments |
+| 17.3 | [Bicep](./Azure%20Resource%20Manager%20and%20Infrastructure%20as%20Code/Bicep/) | Bicep syntax, resources, parameters, variables, modules, outputs, and Azure infrastructure deployment |
+| 17.4 | [ARM Templates vs Bicep](./Azure%20Resource%20Manager%20and%20Infrastructure%20as%20Code/ARM%20Templates%20vs%20Bicep/) | Differences between ARM templates and Bicep and when to use each |
+
