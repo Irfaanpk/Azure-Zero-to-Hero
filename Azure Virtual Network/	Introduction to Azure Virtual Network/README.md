@@ -2,8 +2,6 @@
 
 <div align="center">
 
-<img src="../assets/azure-vnet.png" alt="Azure Virtual Network" width="500" />
-
 </div>
 
 Azure Virtual Network (**VNet**) is a fundamental networking service in Microsoft Azure that allows Azure resources to communicate securely with each other, with the internet, and with on-premises networks.
