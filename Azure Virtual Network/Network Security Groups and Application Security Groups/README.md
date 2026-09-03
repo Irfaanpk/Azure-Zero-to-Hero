@@ -1,12 +1,12 @@
 # 7.4 Network Security Groups and Application Security Groups
 
-**Network Security Groups (NSGs)** and **Application Security Groups (ASGs)** are Azure networking features used to control and organize network traffic between Azure resources.
+**Network Security Groups (NSGs)** and **Application Security Groups (ASGs)** are Azure networking features used to control and organize network traffic.
 
-NSGs provide the actual traffic filtering rules, while ASGs help organize resources into logical application groups that can be referenced in NSG rules.
+An **NSG** provides traffic filtering through security rules, while an **ASG** allows resources to be grouped logically and referenced in NSG rules.
 
 ---
 
-## What is a Network Security Group?
+## Network Security Group (NSG)
 
 A **Network Security Group (NSG)** is a collection of security rules that allow or deny inbound and outbound network traffic.
 
@@ -15,31 +15,14 @@ NSGs can be associated with:
 - Subnets
 - Network Interfaces (NICs)
 
-Example:
-
 ```text
 Internet
    │
    ▼
- NSG
+  NSG
    │
    ▼
 Subnet
-   │
-   ▼
-  VM
-```
-
-or:
-
-```text
-Internet
-   │
-   ▼
-  NIC
-   │
-   ▼
- NSG
    │
    ▼
   VM
@@ -52,35 +35,20 @@ Internet
 NSGs are used to:
 
 - Allow required network traffic
-- Block unwanted traffic
+- Deny unwanted traffic
 - Control inbound connections
 - Control outbound connections
 - Restrict access to specific ports
-- Restrict traffic to specific IP addresses
-- Control communication between network resources
-
-Example:
-
-```text
-Internet
-   │
-   │ TCP 443
-   ▼
-  NSG
-   │
-   ▼
-Web VM
-```
-
-The NSG can allow HTTPS traffic while blocking other unwanted inbound traffic.
+- Restrict traffic from specific sources
+- Control communication between Azure resources
 
 ---
 
-# NSG Security Rules
+## NSG Security Rules
 
-Each NSG contains security rules.
+Each NSG contains security rules that define whether network traffic should be allowed or denied.
 
-A rule can define:
+A rule can specify:
 
 - Source
 - Source port
@@ -88,8 +56,8 @@ A rule can define:
 - Destination port
 - Protocol
 - Direction
-- Action
 - Priority
+- Action
 
 Example:
 
@@ -106,7 +74,7 @@ Priority:    100
 
 ## Inbound Rules
 
-Inbound rules control traffic **coming into** a resource or subnet.
+Inbound rules control traffic coming **into** a resource or subnet.
 
 Example:
 
@@ -115,7 +83,7 @@ Internet
    │
    │ TCP 443
    ▼
- NSG
+  NSG
    │
    ▼
  Web VM
@@ -124,21 +92,19 @@ Internet
 Example rule:
 
 ```text
-Priority: 100
 Source: Any
 Destination: Any
 Protocol: TCP
 Destination Port: 443
 Action: Allow
+Priority: 100
 ```
-
-This allows HTTPS traffic.
 
 ---
 
 ## Outbound Rules
 
-Outbound rules control traffic **leaving** a resource or subnet.
+Outbound rules control traffic leaving a resource or subnet.
 
 Example:
 
@@ -146,7 +112,7 @@ Example:
 VM
  │
  ▼
- NSG
+NSG
  │
  │ TCP 443
  ▼
@@ -156,57 +122,40 @@ Internet
 Example:
 
 ```text
-Priority: 100
 Source: Any
 Destination: Internet
 Protocol: TCP
 Destination Port: 443
 Action: Allow
+Priority: 100
 ```
 
 ---
 
-# NSG Rule Priority
+## NSG Rule Priority
 
-Every NSG rule has a priority.
-
-The priority is a number between:
+Each NSG rule has a priority between:
 
 ```text
 100 - 4096
 ```
 
-Lower numbers have **higher priority**.
+A **lower number has higher priority**.
 
 Example:
 
 ```text
-Priority 100
-Priority 200
-Priority 300
+Priority 100 → Allow TCP 443
+Priority 200 → Deny TCP 443
 ```
 
-The rule with priority `100` is evaluated before the rule with priority `200`.
-
-Example:
-
-```text
-Rule 1
-Priority: 100
-Allow TCP 443
-
-Rule 2
-Priority: 200
-Deny TCP 443
-```
-
-The traffic is allowed because the higher-priority rule matches first.
+If both rules match the same traffic, the rule with priority `100` is evaluated first.
 
 ---
 
-# Allow and Deny Rules
+## Allow and Deny
 
-NSGs support two actions:
+NSG rules support two actions:
 
 ```text
 Allow
@@ -220,7 +169,7 @@ Allow TCP 443
 Deny TCP 22
 ```
 
-This means:
+Result:
 
 ```text
 HTTPS → Allowed
@@ -229,9 +178,9 @@ SSH    → Denied
 
 ---
 
-# Default NSG Rules
+## Default NSG Rules
 
-Azure automatically creates default security rules in an NSG.
+Azure automatically creates default security rules in every NSG.
 
 Common default rules include:
 
@@ -245,15 +194,62 @@ AllowInternetOutBound
 DenyAllOutBound
 ```
 
-These default rules have lower priority than custom rules.
+Custom rules can be created with higher priorities to override applicable default rules.
 
-Custom rules can override the default behavior by using a higher priority.
+---
+
+# Stateful Nature of NSGs
+
+Azure NSGs are **stateful**.
+
+This means when a connection is allowed in one direction, the return traffic for that established connection is automatically allowed.
+
+For example:
+
+```text
+Client
+  │
+  │ Request
+  ▼
+  VM
+  │
+  │ Response
+  ▼
+Client
+```
+
+If the inbound connection is allowed by the NSG, you do not need to create a separate outbound rule specifically to allow the response traffic.
+
+### Example
+
+Suppose:
+
+```text
+Inbound:
+Allow TCP 443
+```
+
+A client connects to the VM:
+
+```text
+Client ── TCP 443 ──► VM
+```
+
+The VM's response:
+
+```text
+VM ── Response ──► Client
+```
+
+is allowed as part of the established connection.
+
+> **NSGs are stateful — return traffic for an allowed connection is automatically permitted.**
 
 ---
 
 # NSG Association
 
-An NSG can be associated with either:
+An NSG can be associated with:
 
 ### Subnet
 
@@ -281,15 +277,11 @@ VM
 
 An NSG can be associated with both a subnet and a NIC.
 
-When both are present, traffic must satisfy the applicable security rules.
-
 ---
 
 # Subnet-Level NSG
 
-When an NSG is associated with a subnet, its rules apply to resources in that subnet.
-
-Example:
+When an NSG is associated with a subnet, its rules apply to network traffic for resources in that subnet.
 
 ```text
 VNet
@@ -301,15 +293,13 @@ VNet
       └── VM 3
 ```
 
-If an NSG is associated with `WebSubnet`, it can control traffic for those resources.
+This is useful when multiple resources need the same network security rules.
 
 ---
 
 # NIC-Level NSG
 
 An NSG can also be associated directly with a NIC.
-
-Example:
 
 ```text
 VM
@@ -319,70 +309,38 @@ VM
       └── NSG
 ```
 
-This allows more specific network traffic control for an individual VM.
+This provides more specific control for an individual network interface.
 
 ---
 
-# NSG Traffic Evaluation
+# NSG with Subnet and NIC
 
-Consider:
-
-```text
-Internet
-    │
-    ▼
-Subnet NSG
-    │
-    ▼
-   NIC NSG
-    │
-    ▼
-    VM
-```
-
-For inbound traffic, both the subnet-level and NIC-level security controls are considered.
-
-For outbound traffic, the applicable rules at both levels are also evaluated.
-
-Traffic must be allowed by the relevant security rules.
-
----
-
-# Network Security Group Example
-
-Suppose a web server needs:
+An NSG can exist at both levels:
 
 ```text
-HTTPS → Port 443
+VNet
+ │
+ └── Subnet
+      │
+      ├── NSG
+      │
+      └── NIC
+           │
+           └── NSG
+                │
+                ▼
+                VM
 ```
 
-but SSH should only be allowed from an administrator's IP.
-
-Rules:
-
-| Priority | Source | Port | Protocol | Action |
-|---:|---|---:|---|---|
-| 100 | Any | 443 | TCP | Allow |
-| 110 | Admin IP | 22 | TCP | Allow |
-| 120 | Any | 22 | TCP | Deny |
-
-Result:
-
-```text
-Internet ── HTTPS 443 ──► Web VM ✓
-
-Admin IP ── SSH 22 ─────► Web VM ✓
-
-Other IP ── SSH 22 ─────► Web VM ✗
-```
+For traffic to be allowed, the applicable security rules at both levels must allow the traffic.
 
 ---
 
 # What is an Application Security Group?
 
-An **Application Security Group (ASG)** allows you to group Azure resources based on their application role.
+An **Application Security Group (ASG)** allows Azure resources to be grouped according to their application role.
 
-Instead of writing NSG rules using individual IP addresses, you can reference ASGs.
+ASGs make it easier to create application-based NSG rules without manually specifying individual IP addresses.
 
 Example:
 
@@ -411,18 +369,17 @@ Application Servers
 
 ---
 
-# Why Use Application Security Groups?
-
-ASGs make NSG rules easier to manage when an application has multiple resources.
+## Why Use Application Security Groups?
 
 Without ASGs:
 
 ```text
-Allow:
-10.0.1.4 → 10.0.2.4
-10.0.1.5 → 10.0.2.4
-10.0.1.6 → 10.0.2.4
+10.0.1.4
+10.0.1.5
+10.0.1.6
 ```
+
+You may need to manage individual IP addresses in security rules.
 
 With ASGs:
 
@@ -430,40 +387,21 @@ With ASGs:
 Web-ASG
    │
    ▼
+NSG Rule
+   │
+   ▼
 App-ASG
 ```
 
-An NSG rule can allow traffic from one application group to another.
-
----
-
-# ASG Architecture
-
-Example three-tier application:
-
-```text
-                 VNet
-                  │
-       ┌──────────┼──────────┐
-       │          │          │
-       ▼          ▼          ▼
-   WebSubnet  AppSubnet  DBSubnet
-       │          │          │
-       ▼          ▼          ▼
-    Web-ASG     App-ASG     DB-ASG
-       │          │          │
-      VMs        VMs        DB
-```
-
-Traffic can be controlled between these application groups.
+The rule can describe the application relationship rather than individual IP addresses.
 
 ---
 
 # ASG with NSG
 
-ASGs do not directly allow or deny traffic.
+An ASG does **not** directly allow or deny traffic.
 
-The **NSG provides the security rule**, while the ASG provides the logical grouping.
+The **NSG provides the security rule**, while the **ASG provides logical grouping**.
 
 Example:
 
@@ -487,32 +425,29 @@ App-ASG
 Protocol:
 TCP
 
-Port:
+Destination Port:
 8080
 
 Action:
 Allow
 ```
 
-This allows application traffic from the Web servers to the Application servers.
-
 ---
 
 # ASG Example
 
-Suppose we have:
+Consider a three-tier application:
 
 ```text
-Web Servers:
-10.0.1.4
-10.0.1.5
-
-Application Servers:
-10.0.2.4
-10.0.2.5
-
-Database Server:
-10.0.3.4
+Web Tier
+   │
+   │ TCP 8080
+   ▼
+Application Tier
+   │
+   │ TCP 1433
+   ▼
+Database Tier
 ```
 
 Create:
@@ -523,7 +458,7 @@ App-ASG
 DB-ASG
 ```
 
-Then create NSG rules:
+NSG rules can then define:
 
 ```text
 Web-ASG → App-ASG
@@ -533,19 +468,7 @@ App-ASG → DB-ASG
 TCP 1433 → Allow
 ```
 
-Architecture:
-
-```text
-Web Servers
-    │
-    │ TCP 8080
-    ▼
-Application Servers
-    │
-    │ TCP 1433
-    ▼
-Database Server
-```
+This provides application-based network traffic control.
 
 ---
 
@@ -556,69 +479,12 @@ Database Server
 | Controls network traffic | Groups resources logically |
 | Contains security rules | Does not contain security rules |
 | Allows or denies traffic | Used as source/destination in NSG rules |
-| Can be associated with subnet/NIC | Associated with NICs |
-| Works with IPs, ports, protocols, and ASGs | Helps simplify application-based rules |
+| Can be associated with subnet or NIC | Associated with NICs |
+| Uses IPs, ports, protocols, and ASGs | Simplifies application-based security rules |
 
 ---
 
-# NSG vs ASG Example
-
-Without ASG:
-
-```text
-10.0.1.4
-10.0.1.5
-10.0.1.6
-        │
-        ▼
-NSG Rule
-        │
-        ▼
-10.0.2.4
-10.0.2.5
-```
-
-With ASG:
-
-```text
-Web-ASG
-   │
-   ▼
-NSG Rule
-   │
-   ▼
-App-ASG
-```
-
-ASGs make the rule easier to understand and maintain.
-
----
-
-# Important Points
-
-- **NSG controls network traffic.**
-- NSGs contain inbound and outbound security rules.
-- NSGs can be associated with subnets or NICs.
-- NSG rules use priorities.
-- Lower priority numbers are evaluated first.
-- NSGs support Allow and Deny actions.
-- Azure provides default NSG rules.
-- Custom rules can be created with higher priorities.
-- **ASG groups resources based on their application role.**
-- ASGs are used inside NSG rules.
-- ASGs simplify security rules for multi-tier applications.
-- ASGs are associated with NICs.
-- ASGs do not replace NSGs; they work together with NSGs.
-
----
-
-# Lab: Configure NSG and ASG
-
-## Objective
-
-Create an NSG, configure inbound rules, create Application Security Groups, and use them in an NSG rule.
-
-## Architecture
+# NSG and ASG Architecture
 
 ```text
                     VNet
@@ -628,14 +494,59 @@ Create an NSG, configure inbound rules, create Application Security Groups, and 
      Web Subnet            App Subnet
           │                     │
           ▼                     ▼
-      Web-ASG                 App-ASG
+       Web VM                 App VM
           │                     │
-       Web VM                App VM
+       Web-ASG                App-ASG
           │                     │
           └────── TCP 8080 ────┘
+                     │
+                     ▼
+                  NSG Rule
 ```
 
-## Part 1 — Create a Network Security Group
+The **NSG controls the traffic**, while the **ASGs identify the application resources**.
+
+---
+
+# Important Points
+
+- An **NSG controls inbound and outbound network traffic**.
+- NSGs contain security rules.
+- NSGs are **stateful**.
+- NSGs can be associated with subnets or NICs.
+- NSG rules have priorities from `100` to `4096`.
+- Lower priority numbers are evaluated first.
+- NSG rules support `Allow` and `Deny`.
+- Azure automatically creates default NSG rules.
+- An **ASG logically groups Azure resources** based on their application role.
+- ASGs are used within NSG rules.
+- ASGs do not replace NSGs.
+- ASGs help simplify security rules for multi-tier applications.
+
+---
+
+# Lab: Configure a Network Security Group
+
+## Objective
+
+Create an NSG, configure inbound and outbound security rules, associate the NSG with a subnet, and test network access.
+
+## Architecture
+
+```text
+                    Internet
+                       │
+                       ▼
+                      NSG
+                       │
+                       ▼
+                   WebSubnet
+                       │
+                       ▼
+                      VM
+```
+
+## Part 1 — Create an NSG
 
 1. Open the **Azure Portal**.
 2. Search for **Network Security Groups**.
@@ -697,7 +608,41 @@ Save the rule.
 
 ---
 
-## Part 3 — Associate the NSG with a Subnet
+## Part 3 — Create Another Inbound Rule
+
+Create a rule to allow SSH only from your own public IP.
+
+```text
+Source:
+IP Addresses
+
+Source IP:
+YOUR_PUBLIC_IP
+
+Destination:
+Any
+
+Destination port:
+22
+
+Protocol:
+TCP
+
+Action:
+Allow
+
+Priority:
+110
+
+Name:
+Allow-SSH-From-My-IP
+```
+
+This allows SSH only from your specified public IP.
+
+---
+
+## Part 4 — Associate the NSG with a Subnet
 
 Open:
 
@@ -721,75 +666,26 @@ WebSubnet
 
 Save the association.
 
----
-
-# Part 4 — Create Application Security Groups
-
-Search for:
+The architecture becomes:
 
 ```text
-Application Security Groups
-```
-
-Create:
-
-```text
-Web-ASG
-```
-
-and:
-
-```text
-App-ASG
-```
-
-Use the same subscription, resource group, and region.
-
----
-
-# Part 5 — Associate VMs with ASGs
-
-Open the Web VM's NIC.
-
-Go to:
-
-```text
-Networking
-    ↓
-Application security groups
-```
-
-Add:
-
-```text
-Web-ASG
-```
-
-For the Application VM, add:
-
-```text
-App-ASG
-```
-
-The architecture is now:
-
-```text
-Web VM
-   │
-   ▼
-Web-ASG
-
-App VM
-   │
-   ▼
-App-ASG
+Internet
+    │
+    ▼
+   NSG
+    │
+    ▼
+WebSubnet
+    │
+    ▼
+   VM
 ```
 
 ---
 
-# Part 6 — Create an ASG-Based NSG Rule
+## Part 5 — Verify the Rules
 
-Open the NSG:
+Open:
 
 ```text
 ZeroToHero-NSG
@@ -797,61 +693,44 @@ ZeroToHero-NSG
 Inbound security rules
 ```
 
-Create a rule:
+Verify:
 
 ```text
-Source:
-Application security group
-
-Source ASG:
-Web-ASG
-
-Destination:
-Application security group
-
-Destination ASG:
-App-ASG
-
-Protocol:
-TCP
-
-Destination port:
-8080
-
-Action:
-Allow
-
-Priority:
-110
-
-Name:
-Allow-Web-to-App
+100 → Allow HTTPS
+110 → Allow SSH from your IP
 ```
 
-Save the rule.
+Also review the Azure default rules.
 
 ---
 
-## Final Architecture
+## Part 6 — Test Connectivity
+
+If you have a VM in the subnet:
+
+### Test HTTPS
+
+Try:
 
 ```text
-                 ZeroToHero-VNet
-                       │
-          ┌────────────┴────────────┐
-          │                         │
-     WebSubnet                  AppSubnet
-          │                         │
-          ▼                         ▼
-       Web VM                    App VM
-          │                         │
-       Web-ASG                    App-ASG
-          │                         │
-          └────── TCP 8080 ────────┘
-                     │
-                  NSG Rule
-                     │
-                   Allow
+https://VM_PUBLIC_IP
 ```
+
+If a web server is configured and port `443` is listening, the connection can be allowed by the NSG.
+
+### Test SSH
+
+From your allowed public IP:
+
+```bash
+ssh username@VM_PUBLIC_IP
+```
+
+The NSG allows TCP port `22` from the configured source IP.
+
+From another source IP, the connection should be blocked by the NSG rule configuration.
+
+---
 
 ## Lab Result
 
@@ -859,8 +738,11 @@ You have learned how to:
 
 - Create an NSG
 - Create inbound security rules
+- Configure rule priorities
+- Allow HTTPS traffic
+- Restrict SSH access to a specific IP
 - Associate an NSG with a subnet
-- Create ASGs
-- Associate resources with ASGs
-- Use ASGs in NSG rules
-- Control application-to-application traffic
+- Understand default NSG rules
+- Test network traffic controlled by an NSG
+
+> **Note:** ASGs are covered conceptually in this topic. A separate ASG lab is not required.
