@@ -237,3 +237,18 @@ This section covers Azure DNS and Traffic Manager — DNS zones, DNS records, pr
 | 13.1 | [Azure DNS](./Azure%20DNS%20and%20Traffic%20Manager/Azure%20DNS/) | DNS zones, DNS records, public and private DNS zones, DNS resolution, and VNet integration |
 | 13.2 | [Azure Traffic Manager](./Azure%20DNS%20and%20Traffic%20Manager/Azure%20Traffic%20Manager/) | Traffic Manager profiles, endpoints, routing methods, health probes, and traffic failover |
 | 13.3 | [Azure DNS and Traffic Manager Comparison](./Azure%20DNS%20and%20Traffic%20Manager/Azure%20DNS%20and%20Traffic%20Manager%20Comparison/) | Azure DNS vs Traffic Manager, DNS hosting vs traffic routing, and when to use each service |
+
+---
+
+## 14. Azure Front Door and CDN
+
+This section covers Azure Front Door and Azure CDN — global application delivery, content caching, routing, origins, endpoints, caching, and content delivery.
+
+📂 **[Explore → Azure Front Door and CDN](./Azure%20Front%20Door%20and%20CDN/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 14.1 | [Azure Front Door](./Azure%20Front%20Door%20and%20CDN/Azure%20Front%20Door/) | Azure Front Door, profiles, endpoints, origins, origin groups, routing, health probes, caching, and global application delivery |
+| 14.2 | [Azure CDN](./Azure%20Front%20Door%20and%20CDN/Azure%20CDN/) | CDN fundamentals, profiles, endpoints, origins, caching, cache rules, content delivery, and cache invalidation |
+| 14.3 | [Azure Front Door vs Azure CDN](./Azure%20Front%20Door%20and%20CDN/Azure%20Front%20Door%20vs%20Azure%20CDN/) | Differences between Front Door and CDN, use cases, architecture, routing, caching, and when to use each |
+
