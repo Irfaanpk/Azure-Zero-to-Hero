@@ -44,7 +44,7 @@ With VMSS:
       VM-1         VM-2         VM-3
 ```
 
-VMSS allows you to manage the instances as part of one scale set.
+VMSS allows you to manage multiple VM instances as a group.
 
 ---
 
@@ -64,7 +64,7 @@ A basic VMSS architecture looks like:
                     Application
 ```
 
-All instances are created and managed through the VM Scale Set.
+The VM instances are created from the VMSS configuration.
 
 ---
 
@@ -83,59 +83,50 @@ VM Scale Set
     └── Instance 4
 ```
 
-You can increase or decrease the number of instances depending on the workload.
+You can increase or decrease the number of instances depending on application requirements.
 
 ---
 
 # VMSS Orchestration Modes
 
-Azure VM Scale Sets support different orchestration modes.
+Azure VM Scale Sets support two orchestration modes:
 
-The main modes are:
-
-- Flexible orchestration
-- Uniform orchestration
-
----
-
-## Flexible Orchestration
-
-**Flexible orchestration** provides VMSS capabilities while allowing more flexibility in managing VM instances.
-
-It is useful when you need:
-
-- VMSS management
-- Scaling
-- Load balancing
-- Availability
-- More flexibility in VM configuration
-
-```text
-VM Scale Set
-      │
-      ├── VM-1
-      ├── VM-2
-      └── VM-3
-```
+- **Uniform orchestration**
+- **Flexible orchestration**
 
 ---
 
 ## Uniform Orchestration
 
-**Uniform orchestration** is designed for a group of identical VM instances.
+Uniform orchestration is designed for groups of identical VM instances.
 
 The instances are based on a common VMSS model.
 
 ```text
-VMSS Model
-    │
-    ├── VM-1
-    ├── VM-2
-    ├── VM-3
-    └── VM-4
+                VMSS Model
+                    │
+          ┌─────────┼─────────┐
+          │         │         │
+        VM-1      VM-2      VM-3
 ```
 
-Uniform orchestration is useful when instances need a consistent configuration.
+It is suitable when multiple instances need a consistent configuration.
+
+---
+
+## Flexible Orchestration
+
+Flexible orchestration provides VMSS capabilities while allowing more flexibility in managing VM instances.
+
+```text
+                VM Scale Set
+                     │
+          ┌──────────┼──────────┐
+          │          │          │
+        VM-1       VM-2       VM-3
+```
+
+It is useful when you need VMSS features while retaining more flexibility over individual VM instances.
 
 ---
 
@@ -168,32 +159,9 @@ VMSS
 
 ---
 
-# VMSS Model
-
-The VMSS maintains a configuration model that defines the configuration used by its instances.
-
-Example:
-
-```text
-VMSS Model
-    │
-    ├── VM Image
-    ├── VM Size
-    ├── OS Configuration
-    ├── Authentication
-    └── Network Configuration
-             │
-             ▼
-       VM Instances
-```
-
-The model helps maintain consistent configuration across instances.
-
----
-
 # VMSS Instance Management
 
-You can manage individual VMSS instances.
+VMSS allows you to manage individual instances within the scale set.
 
 Common operations include:
 
@@ -219,7 +187,7 @@ VM Scale Set
 
 # Manual Scaling
 
-Manual scaling allows you to change the number of VMSS instances yourself.
+Manual scaling allows you to change the number of VMSS instances manually.
 
 Example:
 
@@ -228,7 +196,7 @@ Current Capacity: 2
 
         ↓
 
-Change Capacity: 4
+New Capacity: 4
 ```
 
 Azure creates additional VM instances.
@@ -249,8 +217,6 @@ VMSS
  └── VM-4
 ```
 
-Manual scaling is useful when you know that more or fewer instances are required.
-
 ---
 
 # Horizontal Scaling
@@ -262,9 +228,9 @@ Manual scaling is useful when you know that more or fewer instances are required
 Add more VM instances.
 
 ```text
-2 VMs
- ↓
-4 VMs
+2 VM Instances
+       ↓
+4 VM Instances
 ```
 
 ### Scale In
@@ -272,48 +238,12 @@ Add more VM instances.
 Remove VM instances.
 
 ```text
-4 VMs
- ↓
-2 VMs
-```
-
-VMSS is primarily designed to support horizontal scaling.
-
----
-
-# Vertical Scaling
-
-**Vertical scaling** means changing the resources of an individual VM by changing its VM size.
-
-Example:
-
-```text
-Before:
-
-2 vCPUs
-8 GB RAM
-
-      ↓ Resize
-
-After:
-
-4 vCPUs
-16 GB RAM
-```
-
-Vertical scaling increases the capacity of individual VM instances.
-
-```text
-Horizontal Scaling
+4 VM Instances
        ↓
-Add more VMs
-
-Vertical Scaling
-       ↓
-Increase VM resources
+2 VM Instances
 ```
 
-VM sizing and resizing are covered in more detail in **Section 8.3 — VM Sizes and Pricing Options**.
+VMSS is commonly used for horizontal scaling.
 
 ---
 
@@ -321,9 +251,7 @@ VM sizing and resizing are covered in more detail in **Section 8.3 — VM Sizes 
 
 VM Scale Sets can be deployed across **Availability Zones** in supported Azure regions.
 
-This can improve resilience against zone-level failures.
-
-Example:
+This helps improve resilience against zone-level failures.
 
 ```text
                  VM Scale Set
@@ -335,23 +263,7 @@ Example:
         VM-1        VM-2        VM-3
 ```
 
-If one availability zone becomes unavailable, instances in other zones can continue serving the workload.
-
----
-
-# VMSS and Fault Domains
-
-VMSS instances can also be distributed across fault domains depending on the orchestration and deployment configuration.
-
-Fault domains help reduce the impact of infrastructure failures affecting shared physical resources.
-
-```text
-VM Scale Set
-
-Fault Domain 0       Fault Domain 1
-     │                    │
-   VM-1                 VM-2
-```
+If one zone becomes unavailable, instances in other zones can continue serving the application.
 
 ---
 
@@ -373,9 +285,9 @@ VM Scale Sets can integrate with **Azure Load Balancer** to distribute traffic a
            VM-1       VM-2       VM-3
 ```
 
-The Load Balancer can use health probes to determine which VMSS instances are healthy.
+The Load Balancer can distribute traffic across healthy VMSS instances.
 
-Detailed load balancing and autoscaling are covered in **Section 8.12 — VMSS Load Balancing & Autoscaling**.
+Detailed Load Balancer configuration is covered in **Section 8.9**.
 
 ---
 
@@ -403,66 +315,153 @@ Application Gateway can provide:
 - HTTP/HTTPS routing
 - URL-based routing
 - Host-based routing
-- Health probes
 
 Application Gateway is covered in **Section 8.10**.
 
 ---
 
-# VMSS Availability with Load Balancer
+# VMSS Autoscaling
 
-A common highly available architecture is:
-
-```text
-                         Internet
-                            │
-                            ▼
-                  Azure Load Balancer
-                            │
-                            ▼
-                       VM Scale Set
-                 ┌──────────┼──────────┐
-                 │          │          │
-               VM-1       VM-2       VM-3
-```
-
-If one instance becomes unavailable:
+VMSS can automatically change the number of instances based on workload conditions.
 
 ```text
-VM-1 → Unhealthy
-VM-2 → Healthy
-VM-3 → Healthy
+                  VM Scale Set
+                       │
+                  Autoscaling
+                 /           \
+                ↓             ↓
+           Scale Out       Scale In
 ```
 
-The Load Balancer can continue sending traffic to the healthy instances.
+### Scale Out
+
+When workload increases:
+
+```text
+High CPU / High Workload
+          ↓
+       Scale Out
+          ↓
+   Add VM Instances
+```
+
+### Scale In
+
+When workload decreases:
+
+```text
+Low CPU / Low Workload
+          ↓
+        Scale In
+          ↓
+  Remove VM Instances
+```
 
 ---
 
-# VMSS Scaling vs Availability
+# Autoscaling Limits
 
-These concepts solve different problems.
+Autoscaling can be configured with:
 
-### Scaling
+- Minimum instance count
+- Default instance count
+- Maximum instance count
 
-Handles changes in workload.
-
-```text
-High Workload
-     ↓
-More VM Instances
-```
-
-### Availability
-
-Protects the application from infrastructure failures.
+Example:
 
 ```text
-VM-1 Failure
-     ↓
-VM-2 + VM-3 Continue
+Minimum: 2
+Default: 2
+Maximum: 5
 ```
 
-VMSS can provide both multiple instances and scaling capabilities.
+This means the VMSS can scale between:
+
+```text
+2 ←──── VM Instances ────→ 5
+```
+
+---
+
+# Metric-Based Autoscaling
+
+Autoscaling can use metrics to determine when to add or remove instances.
+
+A common metric is:
+
+```text
+Percentage CPU
+```
+
+Example:
+
+```text
+Average CPU > 70%
+        ↓
+     Scale Out
+```
+
+```text
+Average CPU < 30%
+        ↓
+      Scale In
+```
+
+Azure Monitor provides the metrics used by autoscale.
+
+---
+
+# Scheduled Autoscaling
+
+VMSS can also scale based on a predefined schedule.
+
+This is useful when workload patterns are predictable.
+
+Example:
+
+```text
+Business Hours
+     ↓
+Increase VM Instances
+
+Night Time
+     ↓
+Decrease VM Instances
+```
+
+Example:
+
+```text
+9:00 AM
+   ↓
+Scale to 4 instances
+
+6:00 PM
+   ↓
+Scale to 2 instances
+```
+
+---
+
+# Predictive Autoscaling
+
+**Predictive autoscale** uses historical workload patterns to predict future demand and scale VM instances ahead of expected demand.
+
+Example:
+
+```text
+Historical Workload Data
+          ↓
+   Predict Future Demand
+          ↓
+    Scale Before Demand
+          ↓
+    VMSS Ready for Load
+```
+
+This can help applications prepare for predictable increases in workload.
+
+> Predictive autoscaling is covered conceptually here. The complete autoscaling implementation is demonstrated in **Section 8.12**.
 
 ---
 
@@ -485,36 +484,25 @@ VM Scale Sets are commonly used for:
 
 | Azure VM | VM Scale Set |
 |---|---|
-| Individual VM | Group of VMs |
+| Individual virtual machine | Group of virtual machines |
 | Managed individually | Managed as a group |
 | Suitable for single-instance workloads | Suitable for multiple-instance workloads |
-| Manual scaling | Supports scaling |
+| Manual scaling | Supports manual and automatic scaling |
 | One VM instance | Multiple VM instances |
 
 ---
 
 # VMSS vs Availability Set
 
-These concepts are different.
+These concepts solve different problems.
 
 | VM Scale Set | Availability Set |
 |---|---|
-| Manages a group of VMs | Controls VM placement for availability |
+| Manages multiple VM instances | Controls VM placement for availability |
 | Supports scaling | Does not provide autoscaling |
 | Designed for scalable workloads | Designed to reduce failure impact |
 | Can integrate with Load Balancer | Can integrate with Load Balancer |
-| Creates/manages VM instances as a set | Groups existing VMs |
-
----
-
-# VMSS vs Availability Zones
-
-| VMSS | Availability Zones |
-|---|---|
-| VM management and scaling technology | Physical availability boundary |
-| Manages multiple VM instances | Provides separate data centers |
-| Supports scaling | Provides zone-level resiliency |
-| Can deploy instances across zones | Can be used with VMSS |
+| Creates and manages VM instances as a set | Groups VMs for availability |
 
 ---
 
@@ -524,11 +512,9 @@ These concepts are different.
 
 ### Objective
 
-Create a VM Scale Set with multiple VM instances and practice basic instance management and scaling.
+Create a VM Scale Set with multiple VM instances and practice basic instance management and manual scaling.
 
----
-
-## Step 1: Open Azure Portal
+### Step 1: Open Azure Portal
 
 1. Sign in to the **Azure Portal**.
 2. Search for **Virtual Machine Scale Sets**.
@@ -536,7 +522,7 @@ Create a VM Scale Set with multiple VM instances and practice basic instance man
 
 ---
 
-## Step 2: Configure Basics
+### Step 2: Configure Basics
 
 Configure:
 
@@ -550,7 +536,7 @@ Orchestration Mode
 
 ---
 
-## Step 3: Select VM Image
+### Step 3: Select VM Image
 
 Choose an operating system image.
 
@@ -562,7 +548,7 @@ Ubuntu
 
 ---
 
-## Step 4: Select VM Size
+### Step 4: Select VM Size
 
 Choose a suitable VM size.
 
@@ -574,7 +560,7 @@ General Purpose VM
 
 ---
 
-## Step 5: Configure Authentication
+### Step 5: Configure Authentication
 
 For Linux:
 
@@ -590,7 +576,7 @@ Username + Password
 
 ---
 
-## Step 6: Configure Instance Count
+### Step 6: Configure Instance Count
 
 Set the initial number of instances.
 
@@ -602,7 +588,7 @@ Instance Count: 2
 
 ---
 
-## Step 7: Configure Networking
+### Step 7: Configure Networking
 
 Select or create:
 
@@ -612,7 +598,7 @@ Select or create:
 
 ---
 
-## Step 8: Create the VMSS
+### Step 8: Create the VMSS
 
 Review the configuration and select **Create**.
 
@@ -620,7 +606,7 @@ Wait for the deployment to complete.
 
 ---
 
-## Step 9: Verify Instances
+### Step 9: Verify Instances
 
 Open the VM Scale Set.
 
@@ -635,7 +621,7 @@ Instance 2 → Running
 
 ---
 
-## Step 10: Test Manual Scale Out
+### Step 10: Test Manual Scale Out
 
 Increase the instance count:
 
@@ -654,7 +640,7 @@ VMSS
 
 ---
 
-## Step 11: Test Manual Scale In
+### Step 11: Test Manual Scale In
 
 Reduce the instance count:
 
@@ -666,15 +652,16 @@ Verify that the VMSS instance count decreases.
 
 ---
 
-## Step 12: Explore Instance Management
+### Step 12: Explore Instance Management
 
 Open the VMSS instance list and explore available operations such as:
 
-- Restart
-- Stop
 - Start
+- Stop
+- Restart
 - Reimage
 - Delete
+- View instance details
 
 Do not delete an instance unless you want to test the operation.
 
@@ -684,16 +671,14 @@ Do not delete an instance unless you want to test the operation.
 
 - VM Scale Sets manage multiple Azure VMs as a group.
 - Each VM inside a VMSS is called an instance.
+- VMSS supports Uniform and Flexible orchestration.
 - VMSS provides centralized management of VM instances.
-- Azure supports Flexible and Uniform orchestration modes.
-- Flexible orchestration provides greater flexibility for VM instances.
-- Uniform orchestration is designed for consistent VM instances based on a common model.
-- VMSS maintains a model that defines the configuration of its instances.
 - Manual scaling changes the number of VMSS instances.
-- **Horizontal scaling** adds or removes VM instances.
-- **Vertical scaling** increases or decreases the resources of individual VM instances.
-- VMSS can use Availability Zones for improved resilience.
+- Horizontal scaling adds or removes VM instances.
+- VMSS can be deployed across Availability Zones.
 - VMSS can integrate with Azure Load Balancer.
 - VMSS can be used as a backend for Application Gateway.
-- VMSS is suitable for scalable and highly available applications.
-- Detailed **Load Balancing, Autoscaling, Azure Monitor alerts, Action Groups, and email notification** are covered in **Section 8.12**.
+- VMSS supports autoscaling based on workload conditions.
+- Autoscaling can use metric-based, scheduled, and predictive scaling.
+- Minimum, default, and maximum instance counts control autoscaling boundaries.
+- Detailed VMSS load balancing, autoscaling configuration, monitoring, alerts, Action Groups, and email notification are covered in **Section 8.12**.
