@@ -303,3 +303,18 @@ This section covers Azure Resource Manager (ARM) and infrastructure as code — 
 | 17.3 | [Bicep](./Azure%20Resource%20Manager%20and%20Infrastructure%20as%20Code/Bicep/) | Bicep syntax, resources, parameters, variables, modules, outputs, and Azure infrastructure deployment |
 | 17.4 | [ARM Templates vs Bicep](./Azure%20Resource%20Manager%20and%20Infrastructure%20as%20Code/ARM%20Templates%20vs%20Bicep/) | Differences between ARM templates and Bicep and when to use each |
 
+---
+
+# 18. Azure Functions
+
+This section covers Azure Functions — serverless computing, function apps, triggers, bindings, hosting, configuration, and scaling.
+
+📂 **[Explore → Azure Functions](./Azure%20Functions/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 18.1 | [Introduction to Azure Functions](./Azure%20Functions/Introduction%20to%20Azure%20Functions/) | Serverless computing, Function Apps, functions, triggers, bindings, and core concepts |
+| 18.2 | [Function Triggers and Bindings](./Azure%20Functions/Function%20Triggers%20and%20Bindings/) | HTTP, Timer, Blob, Queue triggers, input/output bindings, and event-driven execution |
+| 18.3 | [Function App Configuration and Hosting](./Azure%20Functions/Function%20App%20Configuration%20and%20Hosting/) | Application settings, runtime configuration, hosting plans, scaling, and networking |
+| 18.4 | [Azure Functions Deployment](./Azure%20Functions/Azure%20Functions%20Deployment/) | Deploying functions, deployment methods, configuration, and basic deployment management |
+
