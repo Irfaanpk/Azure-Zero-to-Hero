@@ -182,3 +182,16 @@ This section covers Azure Managed Disks — disk types, performance, VM disk man
 | 9.1 | [Introduction to Azure Managed Disks](./Azure%20Managed%20Disks/Introduction%20to%20Azure%20Managed%20Disks/) | Managed disks, OS disks, data disks, temporary disks, disk types, IOPS, throughput, and disk selection |
 | 9.2 | [Managing VM Disks](./Azure%20Managed%20Disks/Managing%20VM%20Disks/) | Attaching, detaching, initializing, partitioning, formatting, mounting, resizing, and permanently mounting Linux disks |
 | 9.3 | [Disk Encryption Set](./Azure%20Managed%20Disks/Disk%20Encryption%20Set/) | Disk Encryption Sets, Azure Key Vault, customer-managed keys, managed identities, key rotation, and encryption at host |
+
+---
+
+## 10. Azure App Service
+
+This section covers Azure App Service — web applications, App Service Plans, configuration, scaling, networking, security, and deployment slots.
+
+📂 **[Explore → Azure App Service](./Azure%20App%20Service/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 10.1 | [Introduction to Azure App Service](./Azure%20App%20Service/Introduction%20to%20Azure%20App%20Service/) | App Service, App Service Plans, Web Apps, application stacks, configuration, scaling, networking, security, and deployment |
+| 10.2 | [Deployment Slots](./Azure%20App%20Service/Deployment%20Slots/) | Production and staging slots, slot settings, deployment, testing, swapping, swap with preview, and rollback |
