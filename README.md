@@ -168,3 +168,17 @@ This section covers Azure Virtual Machines — VM fundamentals, lifecycle manage
 | 8.10 | [Azure Application Gateway](./Azure%20Virtual%20Machines/Azure%20Application%20Gateway/) | Layer 7 load balancing, listeners, routing rules, backend pools, health probes, HTTPS, and WAF basics |
 | 8.11 | [VM Scale Sets](./Azure%20Virtual%20Machines/VM%20Scale%20Sets/) | VMSS architecture, instances, scaling, instance management, and flexible orchestration |
 | 8.12 | [VMSS Load Balancing & Autoscaling](./Azure%20Virtual%20Machines/VMSS%20Load%20Balancing%20and%20Autoscaling/) | VMSS load balancing, health probes, autoscaling, scale-out, scale-in, alerts, Action Groups, and email notifications |
+
+---
+
+## 9. Azure Managed Disks
+
+This section covers Azure Managed Disks — disk types, performance, VM disk management, permanent disk mounting, and disk encryption using customer-managed keys.
+
+📂 **[Explore → Azure Managed Disks](./Azure%20Managed%20Disks/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 9.1 | [Introduction to Azure Managed Disks](./Azure%20Managed%20Disks/Introduction%20to%20Azure%20Managed%20Disks/) | Managed disks, OS disks, data disks, temporary disks, disk types, IOPS, throughput, and disk selection |
+| 9.2 | [Managing VM Disks](./Azure%20Managed%20Disks/Managing%20VM%20Disks/) | Attaching, detaching, initializing, partitioning, formatting, mounting, resizing, and permanently mounting Linux disks |
+| 9.3 | [Disk Encryption Set](./Azure%20Managed%20Disks/Disk%20Encryption%20Set/) | Disk Encryption Sets, Azure Key Vault, customer-managed keys, managed identities, key rotation, and encryption at host |
