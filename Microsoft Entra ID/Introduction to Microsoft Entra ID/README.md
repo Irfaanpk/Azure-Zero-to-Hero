@@ -1,4 +1,4 @@
-# 5.1 Introduction to Microsoft Entra ID
+# Introduction to Microsoft Entra ID
 
 Microsoft Entra ID is Microsoft's cloud-based identity and access management service. It helps organizations manage identities and control access to Azure resources and applications.
 
