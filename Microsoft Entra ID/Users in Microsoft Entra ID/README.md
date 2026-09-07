@@ -1,4 +1,4 @@
-# 5.2 Users in Microsoft Entra ID
+# Users in Microsoft Entra ID
 
 Microsoft Entra ID allows organizations to create and manage user identities. Users can authenticate to Microsoft Entra ID and access Azure resources based on their assigned permissions.
 
