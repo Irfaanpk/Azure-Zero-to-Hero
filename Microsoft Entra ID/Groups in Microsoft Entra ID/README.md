@@ -1,4 +1,4 @@
-# 5.3 Groups in Microsoft Entra ID
+# Groups in Microsoft Entra ID
 
 Microsoft Entra ID allows organizations to create and manage groups of users. Groups make it easier to manage access, permissions, and collaboration for multiple users at the same time.
 
