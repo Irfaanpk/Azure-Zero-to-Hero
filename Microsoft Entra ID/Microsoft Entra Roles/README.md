@@ -1,4 +1,4 @@
-# 5.4 Microsoft Entra Roles
+# Microsoft Entra Roles
 
 Microsoft Entra roles are used to control what administrators can do within **Microsoft Entra ID**.
 
