@@ -1,4 +1,4 @@
-# 5.6 Azure RBAC
+# Azure RBAC
 
 **Azure Role-Based Access Control (Azure RBAC)** is the authorization system used to control access to Azure resources.
 
