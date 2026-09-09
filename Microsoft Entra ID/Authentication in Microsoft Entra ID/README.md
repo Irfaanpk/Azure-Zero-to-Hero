@@ -1,4 +1,4 @@
-# 5.5 Authentication in Microsoft Entra ID
+# Authentication in Microsoft Entra ID
 
 Authentication in Microsoft Entra ID is the process of verifying the identity of a user before allowing them to access Azure resources and Microsoft services.
 
