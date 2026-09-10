@@ -1,4 +1,4 @@
-# 5.7 RBAC Scopes
+# RBAC Scopes
 
 **RBAC scope** determines where an Azure RBAC role assignment applies.
 
