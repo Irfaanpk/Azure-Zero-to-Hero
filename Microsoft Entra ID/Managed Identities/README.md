@@ -1,4 +1,4 @@
-# 5.8 Managed Identities
+# Managed Identities
 
 **Managed Identities** in Microsoft Entra ID provide an identity for Azure resources so that they can authenticate to other Azure services without storing usernames, passwords, or credentials in code.
 
