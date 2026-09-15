@@ -1,4 +1,4 @@
-# 6.1 Introduction to Azure Storage
+# Introduction to Azure Storage
 
 Azure Storage is Microsoft's cloud storage platform that provides highly available, durable, and scalable storage services for applications and Azure resources.
 
