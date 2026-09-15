@@ -1,4 +1,4 @@
-# 6.2 Storage Accounts
+# Storage Accounts
 
 An **Azure Storage Account** provides a unique namespace in Azure for storing and accessing data using Azure Storage services.
 
