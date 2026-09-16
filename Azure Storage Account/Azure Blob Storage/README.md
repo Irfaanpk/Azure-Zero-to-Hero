@@ -1,4 +1,4 @@
-# 6.3 Azure Blob Storage
+# Azure Blob Storage
 
 **Azure Blob Storage** is Azure's object storage service for storing large amounts of unstructured data.
 
