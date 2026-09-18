@@ -1,4 +1,4 @@
-# 6.6 Blob Versioning and Immutability
+# Blob Versioning and Immutability
 
 Azure Blob Storage provides **Blob Versioning** and **Blob Immutability** to protect data from accidental modification or deletion.
 
