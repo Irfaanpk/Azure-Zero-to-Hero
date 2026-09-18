@@ -1,4 +1,4 @@
-# 6.5 Static Website Hosting
+# Static Website Hosting
 
 **Azure Storage Static Website Hosting** allows you to host a static website directly from an Azure Storage Account.
 
