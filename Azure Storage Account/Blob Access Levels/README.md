@@ -1,4 +1,4 @@
-# 6.4 Blob Access Levels
+# Blob Access Levels
 
 **Blob Access Level** controls whether data in a Blob Storage container can be accessed anonymously over the internet.
 
