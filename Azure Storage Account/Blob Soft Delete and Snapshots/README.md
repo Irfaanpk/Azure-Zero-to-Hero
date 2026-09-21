@@ -1,4 +1,4 @@
-# 6.7 Blob Soft Delete and Snapshots
+# Blob Soft Delete and Snapshots
 
 Azure Blob Storage provides **Blob Soft Delete** and **Blob Snapshots** to help protect and recover blob data.
 
