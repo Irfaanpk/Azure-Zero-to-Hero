@@ -1,4 +1,4 @@
-# 6.8 Blob Lifecycle Management
+# Blob Lifecycle Management
 
 **Azure Blob Storage Lifecycle Management** allows you to automatically move blobs between access tiers or delete blobs when they meet specific conditions.
 
