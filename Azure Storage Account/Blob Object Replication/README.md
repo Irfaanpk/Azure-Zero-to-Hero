@@ -1,4 +1,4 @@
-# 6.9 Blob Object Replication
+# Blob Object Replication
 
 **Azure Blob Object Replication** asynchronously copies block blobs from a **source storage account** to a **destination storage account**.
 
