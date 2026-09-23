@@ -1,4 +1,4 @@
-# 8.9 Azure Load Balancer
+# Azure Load Balancer
 
 ## What is Azure Load Balancer?
 
