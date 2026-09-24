@@ -1,4 +1,4 @@
-# 6.11 Azure Storage Explorer
+# Azure Storage Explorer
 
 **Azure Storage Explorer** is a graphical tool that allows you to manage Azure Storage resources and data from your local machine.
 
