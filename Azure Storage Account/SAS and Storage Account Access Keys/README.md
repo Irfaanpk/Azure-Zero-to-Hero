@@ -1,4 +1,4 @@
-# 6.10 SAS and Storage Account Access Keys
+# SAS and Storage Account Access Keys
 
 Azure Storage provides different ways to authenticate and authorize access to storage data.
 
