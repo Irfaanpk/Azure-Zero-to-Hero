@@ -1,4 +1,4 @@
-# 8.10 Azure Application Gateway
+# Azure Application Gateway
 
 ## What is Azure Application Gateway?
 
