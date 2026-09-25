@@ -1,4 +1,4 @@
-# 6.13 Blob Storage Security and Encryption
+# Blob Storage Security and Encryption
 
 Azure Storage provides multiple security and encryption features to protect data stored in a storage account.
 
