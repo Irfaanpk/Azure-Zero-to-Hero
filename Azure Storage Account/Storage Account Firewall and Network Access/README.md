@@ -1,4 +1,4 @@
-# 6.12 Storage Account Firewall and Network Access
+# Storage Account Firewall and Network Access
 
 Azure Storage provides network security controls that allow you to control **where storage accounts can be accessed from**.
 
