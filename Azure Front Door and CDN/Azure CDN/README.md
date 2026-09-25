@@ -1,4 +1,4 @@
-# 14.2 Azure CDN
+# Azure CDN
 
 ## What is Azure CDN?
 
