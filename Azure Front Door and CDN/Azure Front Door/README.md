@@ -1,4 +1,4 @@
-# 14.1 Azure Front Door
+# Azure Front Door
 
 ## What is Azure Front Door?
 
