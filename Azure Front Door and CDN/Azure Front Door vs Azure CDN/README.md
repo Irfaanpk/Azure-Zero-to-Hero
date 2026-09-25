@@ -1,4 +1,4 @@
-# 14.3 Azure Front Door vs Azure CDN
+# Azure Front Door vs Azure CDN
 
 ## Azure Front Door vs Azure CDN
 
