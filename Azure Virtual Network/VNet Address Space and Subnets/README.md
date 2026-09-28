@@ -1,4 +1,4 @@
-# 7.2 VNet Address Space and Subnets
+# VNet Address Space and Subnets
 
 An **Azure Virtual Network (VNet)** uses IP address ranges to define how resources communicate within the network.
 
