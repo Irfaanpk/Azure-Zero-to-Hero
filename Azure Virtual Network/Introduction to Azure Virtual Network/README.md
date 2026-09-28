@@ -1,4 +1,4 @@
-# 7.1 Introduction to Azure Virtual Network
+# Introduction to Azure Virtual Network
 
 <div align="center">
 
