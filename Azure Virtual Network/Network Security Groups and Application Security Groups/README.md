@@ -1,4 +1,4 @@
-# 7.4 Network Security Groups and Application Security Groups
+# Network Security Groups and Application Security Groups
 
 **Network Security Groups (NSGs)** and **Application Security Groups (ASGs)** are Azure networking features used to control and organize network traffic.
 
