@@ -1,4 +1,4 @@
-# 6.16 Azure File Sync
+# Azure File Sync
 
 **Azure File Sync** is a service that allows you to synchronize files between an **on-premises Windows Server** and an **Azure file share**.
 
