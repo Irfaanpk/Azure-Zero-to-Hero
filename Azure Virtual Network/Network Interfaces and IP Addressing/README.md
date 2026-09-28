@@ -1,4 +1,4 @@
-# 7.3 Network Interfaces and IP Addressing
+# Network Interfaces and IP Addressing
 
 A **Network Interface (NIC)** is an Azure networking resource that allows a Virtual Machine to communicate with other resources, networks, and the internet.
 
