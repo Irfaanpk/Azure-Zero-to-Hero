@@ -1,4 +1,4 @@
-# 13.1 Azure DNS
+# Azure DNS
 
 ## What is Azure DNS?
 
