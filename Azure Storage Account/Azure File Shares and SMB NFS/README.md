@@ -1,4 +1,4 @@
-# 6.15 Azure File Shares and SMB/NFS
+# Azure File Shares and SMB/NFS
 
 Azure Files provides managed file shares that can be accessed using standard file-sharing protocols.
 
