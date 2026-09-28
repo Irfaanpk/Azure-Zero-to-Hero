@@ -1,4 +1,4 @@
-# 6.14 Azure Files
+# Azure Files
 
 **Azure Files** is a fully managed file-sharing service in Azure.
 
