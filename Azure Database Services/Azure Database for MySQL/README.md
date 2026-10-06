@@ -1,4 +1,4 @@
-# 12.2 Azure Database for MySQL
+# Azure Database for MySQL
 
 ## What is Azure Database for MySQL?
 
