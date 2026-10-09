@@ -281,7 +281,7 @@ Azure SQL Database provides security features such as:
 
 ---
 
-## Lab: Create Azure SQL Database and Connect from an Ubuntu VM
+# Lab: Create Azure SQL Database and Connect from an Ubuntu VM
 
 ## Overview
 
