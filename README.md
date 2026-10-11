@@ -320,6 +320,20 @@ This section covers Azure Functions — serverless computing, function apps, tri
 
 ---
 
+## 19. Real-World Azure Architectures
+
+This section covers three real-world Azure architectures — enterprise web applications, secure enterprise networking, and highly available global applications with disaster recovery.
+
+📂 **[Explore → Real-World Azure Architectures](./Real-World%20Azure%20Architectures/)**
+
+| # | Sub-Topic | Description |
+|---|-----------|-------------|
+| 19.1 | [Three-Tier Enterprise Web Application](./Real-World%20Azure%20Architectures/Three-Tier%20Enterprise%20Web%20Application/) | Three-tier application architecture using Azure Application Gateway, Virtual Machine Scale Sets, Azure SQL Database, VNets, NSGs, Key Vault, and Azure Monitor |
+| 19.2 | [Secure Enterprise Hub-and-Spoke Architecture](./Real-World%20Azure%20Architectures/Secure%20Enterprise%20Hub-and-Spoke%20Architecture/) | Enterprise networking using hub-and-spoke VNets, VNet peering, Azure Firewall, VPN Gateway, Azure Bastion, route tables, private endpoints, and Azure Monitor |
+| 19.3 | [Highly Available Global Application and Disaster Recovery](./Real-World%20Azure%20Architectures/Highly%20Available%20Global%20Application%20and%20Disaster%20Recovery/) | Global application architecture using Azure Front Door, App Service, Azure SQL Database, Azure Storage, Key Vault, Application Insights, Azure Backup, and Azure Site Recovery |
+
+---
+
 ## 🛠️ Prerequisites
 
 - Basic understanding of cloud computing concepts
