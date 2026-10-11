@@ -1,4 +1,4 @@
-# 12.3 Azure Cosmos DB
+# Azure Cosmos DB
 
 ## What is Azure Cosmos DB?
 
