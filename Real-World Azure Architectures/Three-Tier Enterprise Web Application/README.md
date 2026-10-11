@@ -1,7 +1,4 @@
-
-<img src="https://github.com/bhuvan-raj/Kubernetes-Openshift-Zero-to-Hero/blob/main/Service%20(svc)/assets/service.gif" alt="Banner" />
-
-# 19.1 Three-Tier Enterprise Web Application
+# Three-Tier Enterprise Web Application
 
 A **Three-Tier Enterprise Web Application** is an architecture that separates an application into three layers: presentation, application, and database. This design improves security, scalability, and maintainability.
 
@@ -9,7 +6,7 @@ A **Three-Tier Enterprise Web Application** is an architecture that separates an
 
 Add your Azure architecture image inside the `assets` folder and update the filename below if needed.
 
-![Azure Three-Tier Enterprise Web Application Architecture](./assets/three-tier-architecture.png)
+![Azure Three-Tier Enterprise Web Application Architecture](./assets/Azure Three-Tier Web Architecture Diagram.png)
 
 ---
 
