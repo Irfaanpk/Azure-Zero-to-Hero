@@ -6,7 +6,7 @@ A **Three-Tier Enterprise Web Application** is an architecture that separates an
 
 Add your Azure architecture image inside the `assets` folder and update the filename below if needed.
 
-![Azure Three-Tier Enterprise Web Application Architecture](./assets/Azure Three-Tier Web Architecture Diagram.png)
+![Azure Three-Tier Enterprise Web Application Architecture](./assets/arch.png)
 
 ---
 
