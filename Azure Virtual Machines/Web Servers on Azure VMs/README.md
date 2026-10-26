@@ -1,4 +1,4 @@
-# 8.6 Web Servers on Azure VMs
+# Web Servers on Azure VMs
 
 ## What is a Web Server?
 
