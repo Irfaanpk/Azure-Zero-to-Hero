@@ -1,4 +1,4 @@
-# 8.3 VM Sizes and Pricing Options
+# VM Sizes and Pricing Options
 
 ## What is a VM Size?
 
