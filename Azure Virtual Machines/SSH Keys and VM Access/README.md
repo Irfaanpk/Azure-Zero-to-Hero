@@ -1,4 +1,4 @@
-# 8.4 SSH Keys and VM Access
+# SSH Keys and VM Access
 
 ## SSH Keys
 
