@@ -1,4 +1,4 @@
-# 8.8 VM Extensions and Custom Script
+# VM Extensions and Custom Script
 
 ## What are VM Extensions?
 
