@@ -1,4 +1,4 @@
-# 8.5 VM Availability and Placement
+# VM Availability and Placement
 
 ## Why VM Availability Matters
 
