@@ -1,4 +1,4 @@
-# 8.7 Multiple Websites on a Single VM
+# Multiple Websites on a Single VM
 
 ## What is Hosting Multiple Websites on a Single VM?
 
