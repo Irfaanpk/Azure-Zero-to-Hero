@@ -380,217 +380,342 @@ For large production workloads, separate infrastructure may provide better:
 
 ---
 
-# Practical Lab
+Multi-Server-in-Single-Azure-VM Using Nginx
 
-## Lab: Host Two Websites on One Linux VM Using Nginx
+Objective
 
-### Objective
+Host multiple websites on a single Azure Linux Virtual Machine using multiple Private IP addresses, Public IP addresses, and Nginx.
 
-Host two different websites on a single Azure Linux VM using hostname-based routing.
+Architecture:
 
-### Architecture
+* One Azure Virtual Machine.
+* One Network Interface (NIC).
+* Two Private IP addresses.
+* Two Public IP addresses.
+* One Nginx web server.
+* Two different websites.
 
-```text
-                Azure VM
-                   │
-                 Nginx
-                /     \
-               /       \
-        site1.com    site2.com
-           │            │
-     /var/www/site1  /var/www/site2
-```
+Prerequisites
 
----
+* Active Azure Subscription.
+* Azure Linux Virtual Machine (Ubuntu 24.04).
+* SSH access to the VM.
+* Virtual Network and Subnet.
+* Network Security Group (NSG).
 
-### Step 1: Create a Linux VM
+1. Create an Azure Virtual Machine
 
-Create an Ubuntu VM in Azure.
+In Azure Portal:
 
-Allow:
+* Go to Virtual Machines.
+* Click Create → Azure Virtual Machine.
+* Configure:
 
-```text
-SSH  → 22
-HTTP → 80
-```
+Setting	Value
+Image	Ubuntu 24.04 LTS
+Size	Standard B1s (if available)
+Authentication	SSH Public Key
+Public IP	Create new
+VNet	Create new or existing
+Subnet	Select subnet
+Inbound port	SSH (22)
 
----
+* Click Review + Create.
+* Wait until deployment is completed.
 
-### Step 2: Connect to the VM
+2. Create a Secondary Private IP Address
 
-```bash
-ssh username@PUBLIC_IP
-```
+In Azure Portal:
 
----
+* Open your Virtual Machine.
+* Go to Networking.
+* Click the attached Network Interface (NIC).
+* Select IP configurations.
+* Click Add.
+* Configure:
 
-### Step 3: Install Nginx
+Setting	Value
+Name	ipconfig2
+Private IP assignment	Dynamic
+Public IP	Leave unassigned for now
 
-```bash
-sudo apt update
-sudo apt install nginx -y
-```
+7. Click Save.
+
+Azure automatically assigns a secondary private IP address.
+
+Example:
+
+IP Configuration	Private IP
+Primary	10.0.1.4
+Secondary	10.0.1.5
+
+3. Create a Second Public IP Address
+
+Azure uses a Public IP resource instead of AWS Elastic IP.
+
+In Azure Portal:
+
+* Search for Public IP addresses.
+* Click Create.
+* Configure:
+
+Setting	Value
+Name	public-ip-02
+IP Version	IPv4
+SKU	Standard
+Tier	Regional
+Assignment	Static
+Region	Same as VM
+
+4. Click Create.
+
+Associate Public IP with Secondary Private IP
+
+* Open the VM’s Network Interface.
+* Go to IP configurations.
+* Select ipconfig2.
+* Under Public IP address, select public-ip-02.
+* Click Save.
+
+Example:
+
+Configuration	Private IP	Public IP
+IP Config 1	10.0.1.4	20.10.10.10
+IP Config 2	10.0.1.5	20.20.20.20
+
+Note: These are example IP addresses. Use your actual Azure-assigned addresses.
+
+4. Verify Multiple IPs on Azure Linux VM
+
+Connect to the VM using SSH:
+
+ssh -i key.pem azureuser@<public-ip>
+
+Check network interfaces:
+
+ip a
+
+Check routes:
+
+ip route
+
+You should identify the primary and secondary private IP addresses.
+
+Important: Depending on the Ubuntu image and network configuration, the secondary IP may need to be configured inside the Linux guest OS before Nginx can bind to it.
+
+For a temporary lab configuration:
+
+sudo ip addr add 10.0.1.5/24 dev eth0
+
+Replace:
+
+* 10.0.1.5 with your secondary private IP.
+* eth0 with your actual network interface.
+* /24 with your actual subnet prefix.
 
 Verify:
 
-```bash
+ip addr show eth0
+
+This command is temporary and does not survive a reboot. For permanent configuration, use the appropriate Netplan configuration on Ubuntu.
+
+5. Install Nginx
+
+Update Ubuntu packages:
+
+sudo apt update
+
+Install Nginx:
+
+sudo apt install nginx -y
+
+Enable Nginx:
+
+sudo systemctl enable nginx
+
+Start Nginx:
+
+sudo systemctl start nginx
+
+Check status:
+
 sudo systemctl status nginx
-```
 
----
+6. Create Website Directories
 
-### Step 4: Create Website Directories
+Create two website directories:
 
-```bash
 sudo mkdir -p /var/www/site1
 sudo mkdir -p /var/www/site2
-```
 
----
+Create test pages:
 
-### Step 5: Create Website 1
+Website 1
 
-```bash
-sudo nano /var/www/site1/index.html
-```
+echo "Welcome to Azure Site 1" | sudo tee /var/www/site1/index.html
 
-Add:
+Website 2
 
-```html
-<h1>Welcome to Website 1</h1>
-```
+echo "Welcome to Azure Site 2" | sudo tee /var/www/site2/index.html
 
----
+Set permissions:
 
-### Step 6: Create Website 2
+sudo chown -R www-data:www-data /var/www/site1
+sudo chown -R www-data:www-data /var/www/site2
 
-```bash
-sudo nano /var/www/site2/index.html
-```
+7. Create Nginx Configuration for Each IP
 
-Add:
+Create a configuration file:
 
-```html
-<h1>Welcome to Website 2</h1>
-```
+sudo nano /etc/nginx/sites-available/multisite
 
----
+Add the following configuration:
 
-### Step 7: Create Nginx Configuration
-
-Create the first configuration:
-
-```bash
-sudo nano /etc/nginx/sites-available/site1
-```
-
-Add:
-
-```nginx
 server {
-    listen 80;
-    server_name site1.example.com;
-
+    listen 10.0.1.4:80;
+    server_name _;
     root /var/www/site1;
     index index.html;
 }
-```
-
-Create the second configuration:
-
-```bash
-sudo nano /etc/nginx/sites-available/site2
-```
-
-Add:
-
-```nginx
 server {
-    listen 80;
-    server_name site2.example.com;
-
+    listen 10.0.1.5:80;
+    server_name _;
     root /var/www/site2;
     index index.html;
 }
-```
 
----
+Replace the example private IP addresses with your actual private IP addresses.
 
-### Step 8: Enable the Websites
+Enable the configuration:
 
-```bash
-sudo ln -s /etc/nginx/sites-available/site1 /etc/nginx/sites-enabled/
-sudo ln -s /etc/nginx/sites-available/site2 /etc/nginx/sites-enabled/
-```
+sudo ln -s /etc/nginx/sites-available/multisite /etc/nginx/sites-enabled/multisite
 
----
+If the default site conflicts with your configuration, disable it:
 
-### Step 9: Test Nginx Configuration
+sudo rm -f /etc/nginx/sites-enabled/default
 
-```bash
+8. Test and Restart Nginx
+
+Test the configuration:
+
 sudo nginx -t
-```
 
----
+Restart Nginx:
 
-### Step 10: Reload Nginx
+sudo systemctl restart nginx
 
-```bash
-sudo systemctl reload nginx
-```
+Verify Nginx is listening:
 
----
+sudo ss -lntp | grep ':80'
 
-### Step 11: Configure DNS
+If you get Cannot assign requested address, verify that the secondary private IP is configured inside Linux.
 
-Create DNS records pointing both domains to the VM's public IP.
+9. Configure Network Security Group (NSG)
 
-```text
-site1.example.com → VM Public IP
-site2.example.com → VM Public IP
-```
+In Azure Portal:
 
----
+* Open your Virtual Machine.
+* Go to Networking.
+* Open the associated Network Security Group.
+* Select Inbound security rules.
+* Click Add.
 
-### Step 12: Test
+Configure:
 
-Open:
+Setting	Value
+Source	Any
+Source port ranges	*
+Destination	Any
+Service	HTTP
+Destination port	80
+Protocol	TCP
+Action	Allow
+Priority	300
+Name	Allow-HTTP
 
-```text
-http://site1.example.com
-```
+Click Add.
 
-You should see:
+Also ensure that the Linux firewall allows HTTP traffic if it is enabled.
 
-```text
-Welcome to Website 1
-```
+10. Test Websites in Browser
 
-Open:
+Open your browser.
 
-```text
-http://site2.example.com
-```
+Website 1:
 
-You should see:
+http://<public-ip-1>
 
-```text
-Welcome to Website 2
-```
+Expected output:
 
-Both websites are running on the same Azure VM.
+Welcome to Azure Site 1
 
----
+Website 2:
 
-# Key Points
+http://<public-ip-2>
 
-- Multiple websites can run on a single Azure VM.
-- Hostname-based hosting is a common approach.
-- Apache uses **Virtual Hosts**.
-- Nginx uses **Server Blocks**.
-- IIS uses **Bindings**.
-- Multiple domains can point to the same VM public IP.
-- DNS resolves the domain to the VM; the web server selects the website.
-- Different websites can use different directories and configurations.
-- Multiple websites on one VM can reduce infrastructure costs.
-- Separate VMs provide better resource and failure isolation.
+Expected output:
+
+Welcome to Azure Site 2
+
+You can also test internally from the VM:
+
+curl http://10.0.1.4
+curl http://10.0.1.5
+
+11. Architecture
+
+                         Internet
+                            |
+              +-------------+-------------+
+              |                           |
+         Public IP 1                 Public IP 2
+              |                           |
+         Private IP 1                Private IP 2
+              |                           |
+              +-------------+-------------+
+                            |
+                  Azure Linux VM
+                            |
+                          Nginx
+                       Port 80
+                      /        \
+                     /          \
+              Website 1      Website 2
+             /var/www/site1 /var/www/site2
+
+12. AWS vs Azure Comparison
+
+AWS	Azure
+EC2 Instance	Virtual Machine
+ENI	NIC
+Secondary Private IP	Secondary IP Configuration
+Elastic IP	Static Public IP
+Security Group	Network Security Group
+Amazon Linux	Ubuntu
+dnf install nginx	apt install nginx
+/etc/nginx/conf.d/	/etc/nginx/sites-available/
+
+13. Important Learning Points
+
+* One Azure VM can have multiple private IP addresses.
+* Each NIC IP configuration can have an associated Public IP.
+* Azure maps Public IP addresses to Private IP configurations.
+* Nginx can host multiple websites using IP-based virtual hosting.
+* A single Nginx installation can serve multiple websites.
+* NSG controls inbound and outbound network traffic.
+
+14. Cleanup
+
+To avoid unnecessary Azure charges:
+
+* Stop and delete the Virtual Machine when the lab is complete.
+* Delete unused Public IP resources.
+* Delete unused NICs and disks.
+* Delete the dedicated resource group if all resources inside it are no longer needed.
+
+References
+
+* Microsoft Learn – Configure multiple IP addresses for Azure VMs⁠￼
+* Microsoft Learn – Azure Public IP addresses⁠￼
+* Microsoft Learn – Network Security Groups⁠￼
+* Nginx Documentation⁠￼
