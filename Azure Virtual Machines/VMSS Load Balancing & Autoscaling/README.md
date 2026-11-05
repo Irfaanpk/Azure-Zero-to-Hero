@@ -1,4 +1,4 @@
-# 8.12 VMSS Load Balancing & Autoscaling
+# VMSS Load Balancing & Autoscaling
 
 ## Project Overview
 
