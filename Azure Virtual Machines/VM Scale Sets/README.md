@@ -1,4 +1,4 @@
-# 8.11 VM Scale Sets
+# VM Scale Sets
 
 ## What are Virtual Machine Scale Sets?
 
