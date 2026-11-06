@@ -167,7 +167,7 @@ This section covers Azure Virtual Machines — VM fundamentals, lifecycle manage
 | 8.9 | [Azure Load Balancer](./Azure%20Virtual%20Machines/Azure%20Load%20Balancer/) | Load balancing, frontend IP, backend pools, health probes, rules, inbound NAT, and outbound rules |
 | 8.10 | [Azure Application Gateway](./Azure%20Virtual%20Machines/Azure%20Application%20Gateway/) | Layer 7 load balancing, listeners, routing rules, backend pools, health probes, HTTPS, and WAF basics |
 | 8.11 | [VM Scale Sets](./Azure%20Virtual%20Machines/VM%20Scale%20Sets/) | VMSS architecture, instances, scaling, instance management, and flexible orchestration |
-| 8.12 | [VMSS Load Balancing & Autoscaling](./Azure%20Virtual%20Machines/VMSS%20Load%20Balancing%20and%20Autoscaling/) | VMSS load balancing, health probes, autoscaling, scale-out, scale-in, alerts, Action Groups, and email notifications |
+| 8.12 | [VMSS Load Balancing & Autoscaling](./Azure%20Virtual%20Machines/VMSS%20Load%20Balancing%20&%20Autoscaling/) | VMSS load balancing, health probes, autoscaling, scale-out, scale-in, alerts, Action Groups, and email notifications |
 
 ---
 
