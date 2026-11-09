@@ -1,4 +1,4 @@
-# 9.1 Introduction to Azure Managed Disks
+# Introduction to Azure Managed Disks
 
 ## What are Azure Managed Disks?
 
