@@ -1,4 +1,4 @@
-# 9.3 Disk Encryption Set
+# Disk Encryption Set
 
 ## What is a Disk Encryption Set?
 
