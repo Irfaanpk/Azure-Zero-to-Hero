@@ -1,4 +1,4 @@
-# 9.2 Managing VM Disks
+# Managing VM Disks
 
 Azure Managed Disks can be attached to virtual machines as data disks. You can initialize, partition, format, mount, resize, and manage these disks according to the operating system.
 
