@@ -1,4 +1,4 @@
-# 10.2 Deployment Slots
+# Deployment Slots
 
 ## What are Deployment Slots?
 
