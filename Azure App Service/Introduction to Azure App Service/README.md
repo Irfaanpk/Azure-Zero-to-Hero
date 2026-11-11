@@ -1,4 +1,4 @@
-# 10.1 Introduction to Azure App Service
+# Introduction to Azure App Service
 
 ## What is Azure App Service?
 
