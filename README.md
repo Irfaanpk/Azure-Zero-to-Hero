@@ -206,9 +206,9 @@ This section covers Azure container services — container deployment, container
 
 | # | Sub-Topic | Description |
 |---|-----------|-------------|
-| 11.1 | [Azure Container Instances](./Azure%20Container%20Services/Azure%20Container%20Instances/) | Container basics, container images, container groups, networking, environment variables, restart policies, and container management |
-| 11.2 | [Azure Container Registry](./Azure%20Container%20Services/Azure%20Container%20Registry/) | Container registries, repositories, images, tags, pushing and pulling images, authentication, and integration with Azure container services |
-| 11.3 | [Azure Container Apps](./Azure%20Container%20Services/Azure%20Container%20Apps/) | Container Apps, environments, revisions, ingress, scaling, environment variables, and containerized application hosting |
+| 11.1 | [Azure Container Instances](./Azure%20Container%20Instances/) | Container basics, container images, container groups, networking, environment variables, restart policies, and container management |
+| 11.2 | [Azure Container Registry](./Azure%20Container%20Registry/) | Container registries, repositories, images, tags, pushing and pulling images, authentication, and integration with Azure container services |
+| 11.3 | [Azure Container Apps](./Azure%20Container%20Apps/) | Container Apps, environments, revisions, ingress, scaling, environment variables, and containerized application hosting |
 
 ---
 
