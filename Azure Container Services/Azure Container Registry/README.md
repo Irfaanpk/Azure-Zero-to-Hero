@@ -1,4 +1,4 @@
-# 11.2 Azure Container Registry
+# Azure Container Registry
 
 ## What is Azure Container Registry?
 
