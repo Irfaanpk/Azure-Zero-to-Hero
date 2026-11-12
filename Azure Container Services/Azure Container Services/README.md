@@ -1,4 +1,4 @@
-# 11.1 Azure Container Instances
+# Azure Container Instances
 
 ## What is Azure Container Instances?
 
