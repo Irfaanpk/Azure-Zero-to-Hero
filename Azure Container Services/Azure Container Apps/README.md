@@ -1,4 +1,4 @@
-# 11.3 Azure Container Apps
+# Azure Container Apps
 
 ## What is Azure Container Apps?
 
