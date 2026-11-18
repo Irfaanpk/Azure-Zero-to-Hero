@@ -1,4 +1,4 @@
-# 13.2 Azure Traffic Manager
+# Azure Traffic Manager
 
 ## What is Azure Traffic Manager?
 
