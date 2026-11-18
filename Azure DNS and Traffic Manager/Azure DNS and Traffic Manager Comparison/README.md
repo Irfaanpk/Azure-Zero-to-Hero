@@ -1,4 +1,4 @@
-# 13.3 Azure DNS and Traffic Manager Comparison
+# Azure DNS and Traffic Manager Comparison
 
 ## Azure DNS vs Azure Traffic Manager
 
