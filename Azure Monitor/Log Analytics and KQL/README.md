@@ -1,4 +1,4 @@
-# 15.3 Log Analytics and KQL
+# Log Analytics and KQL
 
 ## What is Log Analytics?
 
