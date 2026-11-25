@@ -1,4 +1,4 @@
-# 15.2 Azure Monitor Metrics and Logs
+# Azure Monitor Metrics and Logs
 
 ## Azure Monitor Metrics
 
