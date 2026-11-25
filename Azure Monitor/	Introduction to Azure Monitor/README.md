@@ -1,4 +1,4 @@
-# 15.1 Introduction to Azure Monitor
+# Introduction to Azure Monitor
 
 ## What is Azure Monitor?
 
