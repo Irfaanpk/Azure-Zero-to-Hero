@@ -1,4 +1,4 @@
-# 15.4 Diagnostic Settings
+# Diagnostic Settings
 
 ## What are Diagnostic Settings?
 
